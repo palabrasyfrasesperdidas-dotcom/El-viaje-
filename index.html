@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Viaje del Impulso Nervioso - Misión APSD</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Retro Arcade & Sci-Fi -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #080014;
+      color: #00f6ff;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+      overflow-x: hidden;
+    }
+
+    .font-vt323 {
+      font-family: 'VT323', monospace;
+    }
+
+    /* Efecto CRT Scanlines */
+    .scanlines {
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.4) 50%
+      );
+      background-size: 100% 4px;
+      z-index: 40;
+      pointer-events: none;
+    }
+
+    /* Contenedor Principal Cyber-Neón */
+    .crt-container {
+      border: 4px solid #00f6ff;
+      box-shadow: 0 0 20px #00f6ff, inset 0 0 15px #00f6ff, 0 0 35px #ff007f;
+      border-radius: 12px;
+      background: radial-gradient(circle, #160033 0%, #050010 100%);
+    }
+
+    /* Neones */
+    .neon-pink {
+      color: #ff007f;
+      text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #ff007f;
+    }
+
+    .neon-cyan {
+      color: #00f6ff;
+      text-shadow: 0 0 5px #00f6ff, 0 0 10px #00f6ff, 0 0 20px #00f6ff;
+    }
+
+    .neon-yellow {
+      color: #ffe600;
+      text-shadow: 0 0 5px #ffe600, 0 0 10px #ffe600;
+    }
+
+    /* Botones Arcade */
+    .btn-arcade {
+      background: linear-gradient(180deg, #ff007f 0%, #99004d 100%);
+      border: 3px solid #ffe600;
+      color: #ffffff;
+      text-shadow: 2px 2px #000;
+      box-shadow: 0 5px 0 #4d0026, 0 0 15px rgba(255, 0, 127, 0.6);
+      transition: all 0.1s ease;
+    }
+
+    .btn-arcade:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #4d0026;
+    }
+
+    .btn-option {
+      background: linear-gradient(180deg, #1f0a42 0%, #0b021a 100%);
+      border: 2px solid #00f6ff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-option:hover, .btn-option:active {
+      border-color: #ffe600;
+      background: #330066;
+      box-shadow: 0 0 12px #ffe600;
+    }
+
+    @keyframes pulse-energy {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #00f6ff); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #ff007f); }
+    }
+
+    .animate-energy {
+      animation: pulse-energy 2.5s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen w-screen flex flex-col items-center justify-center p-2 sm:p-4">
+
+  <!-- Audio de Fondo (Opcional synthwave) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="arcade-theme.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Botón Sonido -->
+  <button id="btn-audio-toggle" class="fixed top-3 right-3 z-50 bg-purple-950 border-2 border-cyan-400 text-cyan-300 p-3 rounded-full shadow-[0_0_10px_#00f6ff] text-xs cursor-pointer">
+    <i id="audio-icon" class="fa-solid fa-volume-xmark"></i>
+  </button>
+
+  <!-- Capa Scanlines -->
+  <div class="fixed inset-0 scanlines"></div>
+
+  <!-- Contenedor Arcade Principal -->
+  <main class="crt-container w-full max-w-2xl min-h-[600px] h-full max-h-[820px] flex flex-col justify-between p-4 sm:p-6 relative overflow-y-auto z-10">
+    
+    <!-- ================= VISTA 1: INICIO ================= -->
+    <section id="view-1" class="h-full flex flex-col justify-between items-center text-center py-2">
+      <header class="mt-2">
+        <h1 class="text-xl sm:text-3xl neon-pink tracking-wider leading-relaxed">
+          EL VIAJE DEL<br><span class="neon-cyan text-2xl sm:text-4xl">IMPULSO NERVIOSO</span>
+        </h1>
+        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">MISIÓN ANATOMÍA APSD</p>
+      </header>
+
+      <!-- Ilustración Neuronal -->
+      <div class="my-4 flex flex-col items-center justify-center animate-energy">
+        <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950/80 p-2 shadow-[0_0_25px_#00f6ff]">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Sistema Nervioso" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
+        </div>
+        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Nivel de Energía: 100% ⚡</span>
+      </div>
+
+      <footer class="w-full mb-2">
+        <button id="btn-to-view2" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+          INICIAR VIAJE <i class="fa-solid fa-bolt ml-2"></i>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ================= VISTA 2: INSTRUCCIONES / NARRATIVA ================= -->
+    <section id="view-2" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
+      <header>
+        <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider">LA MISIÓN</h2>
+      </header>
+
+      <div class="my-auto w-full p-4 sm:p-5 bg-purple-950/90 border-2 border-cyan-400 rounded-lg shadow-[0_0_15px_#00f6ff] text-left">
+        <div class="flex items-center gap-2 mb-3 border-b-2 border-pink-500 pb-2">
+          <i class="fa-solid fa-brain text-pink-400 text-xl"></i>
+          <span class="text-xs sm:text-sm text-cyan-300 uppercase">INSTRUCCIONES DEL IMPULSO</span>
+        </div>
+        
+        <p class="text-xs sm:text-sm leading-relaxed text-gray-100 font-vt323 text-2xl sm:text-3xl my-2">
+          "Eres un potencial de acción eléctrico generado en el cuerpo humano. Tu objetivo es recorrer las 5 fases del Sistema Nervioso desde el origen neuronal hasta las pruebas diagnósticas."
+        </p>
+
+        <div class="mt-3 pt-2 border-t border-purple-800 text-[10px] sm:text-xs text-pink-300 space-y-1">
+          <p>⚡ <b>Sistemas de Navegación:</b></p>
+          <p>• Observa atentamente las imágenes anatómicas de cada fase.</p>
+          <p>• Responde correctamente las preguntas para activar los neurotransmisores y avanzar.</p>
+          <p>• Si fallas, reintentarás hasta completar la ruta fisiológica.</p>
+        </div>
+      </div>
+
+      <footer class="w-full mb-2">
+        <button id="btn-start-game" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+          ENTRAR AL CEREBRO <i class="fa-solid fa-play ml-2"></i>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ================= VISTA 3: FASES DEL JUEGO ================= -->
+    <section id="view-3" class="hidden h-full flex flex-col justify-between items-center relative">
+      
+      <!-- Marcador Superior -->
+      <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
+        <div>
+          <span class="text-pink-400">FASE:</span>
+          <span id="phase-display" class="text-yellow-300">1 / 5</span>
+        </div>
+        <div>
+          <span class="text-cyan-400">ENERGÍA:</span>
+          <span id="score-display" class="text-green-400">100%</span>
+        </div>
+      </div>
+
+      <!-- Tarjeta Principal de la Fase -->
+      <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 sm:p-4 text-left flex-grow flex flex-col justify-between overflow-y-auto">
+        
+        <!-- Cabecera de la Fase -->
+        <div>
+          <span id="phase-title" class="text-xs sm:text-sm neon-cyan block mb-1">FASE 1: MICROESTRUCTURA NEURONAL</span>
+          <h3 id="question-text" class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
+            Cargando pregunta...
+          </h3>
+        </div>
+
+        <!-- Imagen Anatómica Representativa de la Fase -->
+        <div class="my-2 h-36 sm:h-44 w-full rounded border-2 border-cyan-400 overflow-hidden relative bg-black flex items-center justify-center">
+          <img id="phase-image" src="" alt="Anatomía" class="w-full h-full object-cover">
+          <span id="image-caption" class="absolute bottom-0 inset-x-0 bg-black/80 text-[9px] text-cyan-200 text-center py-1 font-vt323 text-lg">
+            Esquema Anatómico
+          </span>
+        </div>
+
+        <!-- Opciones de Respuesta (WAP Touch) -->
+        <div id="options-container" class="grid grid-cols-1 gap-2 mt-2">
+          <!-- Se cargan dinámicamente -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= VISTA 4: PANTALLA FINAL DE VICTORIA ================= -->
+    <section id="view-win" class="hidden h-full flex flex-col justify-between items-center text-center relative overflow-hidden py-2">
+      <canvas id="fireworksCanvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+      <div class="relative z-10 flex flex-col justify-between h-full w-full items-center">
+        <header class="mt-2">
+          <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider animate-bounce">
+            ¡RECORRIDO COMPLETADO!
+          </h2>
+        </header>
+
+        <div class="my-auto p-4 sm:p-6 bg-purple-950/90 border-4 border-pink-500 rounded-lg shadow-[0_0_30px_#ff007f] max-w-md w-full">
+          <div class="text-6xl sm:text-7xl mb-3 flex justify-center gap-3">
+            <span>⚡</span>
+            <span>🧠</span>
+          </div>
+          <h3 class="text-sm sm:text-base text-cyan-300 mb-2 uppercase tracking-wide">
+            ¡ENHORABUENA!
+          </h3>
+          <p class="text-xs sm:text-sm text-yellow-300 font-vt323 text-2xl sm:text-3xl leading-relaxed my-2">
+            "Has recorrido con éxito todo el Sistema Nervioso"
+          </p>
+          <p class="text-[10px] text-pink-300 font-vt323 text-xl mt-2">
+            ¡Dominas la anatomía, las vías del SNP y las pruebas de imagen!
+          </p>
+        </div>
+
+        <footer class="w-full mb-2 z-10">
+          <button id="btn-restart" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+            REPETIR VIAJE <i class="fa-solid fa-rotate-right ml-2"></i>
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- POPUP MODAL EXPLICATIVO (FEEDBACK) -->
+    <div id="feedback-modal" class="hidden absolute inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-4 sm:p-6 text-left relative shadow-[0_0_20px_#00f6ff]">
+        
+        <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
+          <span id="feedback-icon" class="text-4xl">💡</span>
+          <div>
+            <h3 id="feedback-status" class="text-sm sm:text-base text-yellow-300">¡EVALUACIÓN!</h3>
+          </div>
+        </div>
+
+        <p id="feedback-text" class="text-xs sm:text-sm text-gray-100 leading-relaxed font-vt323 text-2xl mb-4">
+          Explicación pedagógica...
+        </p>
+
+        <button id="btn-next-question" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer">
+          CONTINUAR <i class="fa-solid fa-forward ml-1"></i>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // ================= BANCO DE PREGUNTAS Y FASES INTEGRADO =================
+    const gamePhases = [
+      {
+        phaseNum: "1 / 5",
+        phaseTitle: "FASE 1: MICROESTRUCTURA Y NEURONAS",
+        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=600&q=80",
+        caption: "Estructura Celular: Neuronas y Neuroglía",
+        question: "¿Qué parte de la neurona se encarga de conducir el impulso nervioso lejos del cuerpo celular o soma?",
+        options: [
+          { text: "Las Dendritas", correct: false, reason: "Las dendritas reciben y conducen el impulso hacia el cuerpo celular, no lejos de él." },
+          { text: "El Axón", correct: true, reason: "¡Correcto! El axón conduce el impulso lejos del soma y suele estar recubierto de mielina para mayor velocidad." },
+          { text: "Los Astrocitos", correct: false, reason: "Los astrocitos forman parte de la neuroglía (sostén/barrera hematoencefálica), no transmiten impulsos." }
+        ]
+      },
+      {
+        phaseNum: "2 / 5",
+        phaseTitle: "FASE 2: EL ENCÉFALO (CENTRO SUPERIOR)",
+        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=80",
+        caption: "Cerebro, Diencéfalo y Cerebelo",
+        question: "Llegas al Cerebelo. ¿Cuál es la función principal de esta estructura en el movimiento?",
+        options: [
+          { text: "Generar la orden de movimiento voluntario", correct: false, reason: "El movimiento voluntario se origina en la corteza cerebral (lóbulo frontal)." },
+          { text: "Coordinación inconsciente para que el movimiento sea suave y no tembloroso", correct: true, reason: "¡Excelente! El cerebelo coordina de forma inconsciente el movimiento para darle fluidez." },
+          { text: "Segregar melatonina para el sueño", correct: false, reason: "La melatonina la segrega la glándula pineal en el epitálamo." }
+        ]
+      },
+      {
+        phaseNum: "3 / 5",
+        phaseTitle: "FASE 3: MÉDULA ESPINAL Y MENINGES",
+        image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&q=80",
+        caption: "Cubiertas del SNC: Duramadre, Aracnoides y Piamadre",
+        question: "¿En qué espacio localizado por debajo de la aracnoides circula la mayor parte del Líquido Cefalorraquídeo (LCR)?",
+        options: [
+          { text: "Espacio Subaracnoideo", correct: true, reason: "¡Correcto! En el espacio subaracnoideo circula el LCR actuando como amortiguador y nutriente." },
+          { text: "Espacio Epidural", correct: false, reason: "El espacio epidural o extradural se sitúa por encima de la duramadre." },
+          { text: "Espacio Subdural", correct: false, reason: "El espacio subdural está entre la duramadre y la aracnoides." }
+        ]
+      },
+      {
+        phaseNum: "4 / 5",
+        phaseTitle: "FASE 4: SISTEMA NERVIOSO PERIFÉRICO (SNP)",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
+        caption: "Nervios Craneales, Espinales y SN Autónomo",
+        question: "¿Qué división del Sistema Nervioso Autónomo prepara al cuerpo para situaciones de lucha, huida o alerta?",
+        options: [
+          { text: "Sistema Nervioso Somático", correct: false, reason: "El sistema somático es de control voluntario sobre el músculo esquelético." },
+          { text: "Sistema Parasimpático", correct: false, reason: "El parasimpático se encarga del descanso, relajación y conservación de energía." },
+          { text: "Sistema Simpático", correct: true, reason: "¡Así es! El sistema simpático prepara al organismo para situaciones de lucha o estrés." }
+        ]
+      },
+      {
+        phaseNum: "5 / 5",
+        phaseTitle: "FASE 5: EXPLORACIÓN DEL SISTEMA NERVIOSO",
+        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80",
+        caption: "Pruebas de Imagen: TC y Resonancia Magnética",
+        question: "En el examen neurológico por imagen, ¿cuándo se prefiere principalmente la TC (Tomografía Computarizada) frente a la RM?",
+        options: [
+          { text: "En emergencias, sospecha de traumatismo craneoencefálico o lesiones óseas", correct: true, reason: "¡Correcto! La TC es rápida y de elección en emergencias y trauma óseo, mientras la RM evalúa mejor tejidos blandos." },
+          { text: "Para diagnosticar enfermedades desmielinizantes en etapa temprana", correct: false, reason: "Las enfermedades desmielinizantes y lesiones isquémicas tempranas se evalúan mejor con Resonancia Magnética (RM)." },
+          { text: "Exclusivamente en bebés menores de 18 meses", correct: false, reason: "En menores de 18 meses se utiliza la ecografía fontanelar." }
+        ]
+      }
+    ];
+
+    // Variables de Estado
+    let currentPhaseIndex = 0;
+    const bgMusic = document.getElementById('bg-music');
+    const btnAudioToggle = document.getElementById('btn-audio-toggle');
+    const audioIcon = document.getElementById('audio-icon');
+    let isMuted = true;
+
+    // Control Sonido
+    btnAudioToggle.addEventListener('click', () => {
+      if (isMuted) {
+        bgMusic.play().then(() => {
+          isMuted = false;
+          audioIcon.className = "fa-solid fa-volume-high text-green-400";
+        }).catch(() => {});
+      } else {
+        bgMusic.pause();
+        isMuted = true;
+        audioIcon.className = "fa-solid fa-volume-xmark text-cyan-300";
+      }
+    });
+
+    // Navegación
+    const view1 = document.getElementById('view-1');
+    const view2 = document.getElementById('view-2');
+    const view3 = document.getElementById('view-3');
+    const viewWin = document.getElementById('view-win');
+
+    document.getElementById('btn-to-view2').addEventListener('click', () => {
+      view1.classList.add('hidden');
+      view2.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-start-game').addEventListener('click', () => {
+      view2.classList.add('hidden');
+      view3.classList.remove('hidden');
+      currentPhaseIndex = 0;
+      loadPhase(currentPhaseIndex);
+    });
+
+    document.getElementById('btn-restart').addEventListener('click', () => {
+      viewWin.classList.add('hidden');
+      view1.classList.remove('hidden');
+    });
+
+    // Cargar Fase
+    function loadPhase(index) {
+      const data = gamePhases[index];
+      document.getElementById('phase-display').textContent = data.phaseNum;
+      document.getElementById('phase-title').textContent = data.phaseTitle;
+      document.getElementById('question-text').textContent = data.question;
+      document.getElementById('phase-image').src = data.image;
+      document.getElementById('image-caption').textContent = data.caption;
+
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      data.options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.className = "btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer flex items-center gap-2";
+        btn.innerHTML = `<span class="text-pink-400">⚡</span> ${opt.text}`;
+        btn.addEventListener('click', () => handleOptionClick(opt));
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // Modal Feedback
+    const modal = document.getElementById('feedback-modal');
+    const feedbackIcon = document.getElementById('feedback-icon');
+    const feedbackStatus = document.getElementById('feedback-status');
+    const feedbackText = document.getElementById('feedback-text');
+    let isCurrentCorrect = false;
+
+    function handleOptionClick(option) {
+      isCurrentCorrect = option.correct;
+      feedbackText.textContent = option.reason;
+
+      if (option.correct) {
+        feedbackIcon.textContent = "✅";
+        feedbackStatus.textContent = "¡SINAPSIS EXITOSA!";
+        feedbackStatus.className = "text-sm sm:text-base text-green-400 font-bold";
+      } else {
+        feedbackIcon.textContent = "⚠️";
+        feedbackStatus.textContent = "¡BLOQUEO DE SEÑAL!";
+        feedbackStatus.className = "text-sm sm:text-base text-red-400 font-bold";
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    document.getElementById('btn-next-question').addEventListener('click', () => {
+      modal.classList.add('hidden');
+      if (isCurrentCorrect) {
+        currentPhaseIndex++;
+        if (currentPhaseIndex < gamePhases.length) {
+          loadPhase(currentPhaseIndex);
+        } else {
+          view3.classList.add('hidden');
+          viewWin.classList.remove('hidden');
+          initFireworks();
+        }
+      }
+    });
+
+    // Fuegos Artificiales
+    function initFireworks() {
+      const fwCanvas = document.getElementById('fireworksCanvas');
+      const fwCtx = fwCanvas.getContext('2d');
+      fwCanvas.width = fwCanvas.clientWidth;
+      fwCanvas.height = fwCanvas.clientHeight;
+
+      let particles = [];
+      function createFirework(x, y) {
+        const colors = ['#ff007f', '#00f6ff', '#ffe600', '#00ff66'];
+        for (let i = 0; i < 30; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 4 + 2;
+          particles.push({
+            x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+            alpha: 1, color: colors[Math.floor(Math.random() * colors.length)]
+          });
+        }
+      }
+
+      setInterval(() => {
+        if (!viewWin.classList.contains('hidden')) {
+          createFirework(Math.random() * fwCanvas.width, Math.random() * (fwCanvas.height / 2));
+        }
+      }, 600);
+
+      function animate() {
+        fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+        particles.forEach((p, idx) => {
+          p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.alpha -= 0.015;
+          if (p.alpha <= 0) { particles.splice(idx, 1); return; }
+          fwCtx.save(); fwCtx.globalAlpha = p.alpha; fwCtx.fillStyle = p.color;
+          fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2); fwCtx.fill();
+          fwCtx.restore();
+        });
+        if (!viewWin.classList.contains('hidden')) requestAnimationFrame(animate);
+      }
+      animate();
+    }
+  </script>
+</body>
+</html>
