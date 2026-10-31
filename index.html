@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>El Viaje del Impulso Nervioso - APSD</title>
+  <title>El Viaje del Impulso Nervioso - Arcade APSD</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -77,6 +77,18 @@
       box-shadow: 0 1px 0 #4d0026;
     }
 
+    .btn-hotspot {
+      background: rgba(0, 246, 255, 0.15);
+      border: 2px dashed #00f6ff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-hotspot:hover, .btn-hotspot.active {
+      background: rgba(255, 0, 127, 0.4);
+      border-color: #ff007f;
+      box-shadow: 0 0 15px #ff007f;
+    }
+
     .btn-option {
       background: linear-gradient(180deg, #1f0a42 0%, #0b021a 100%);
       border: 2px solid #00f6ff;
@@ -87,15 +99,6 @@
       border-color: #ffe600;
       background: #330066;
       box-shadow: 0 0 12px #ffe600;
-    }
-
-    @keyframes pulse-energy {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #00f6ff); }
-      50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #ff007f); }
-    }
-
-    .animate-energy {
-      animation: pulse-energy 2.5s infinite ease-in-out;
     }
   </style>
 </head>
@@ -115,7 +118,7 @@
   <div class="fixed inset-0 scanlines"></div>
 
   <!-- Contenedor Arcade Principal -->
-  <main class="crt-container w-full max-w-2xl min-h-[620px] h-full max-h-[850px] flex flex-col justify-between p-4 sm:p-6 relative overflow-y-auto z-10">
+  <main class="crt-container w-full max-w-2xl min-h-[640px] h-full max-h-[880px] flex flex-col justify-between p-4 sm:p-6 relative overflow-y-auto z-10">
     
     <!-- ================= VISTA 1: INICIO ================= -->
     <section id="view-1" class="h-full flex flex-col justify-between items-center text-center py-2">
@@ -123,74 +126,72 @@
         <h1 class="text-xl sm:text-3xl neon-pink tracking-wider leading-relaxed">
           EL VIAJE DEL<br><span class="neon-cyan text-2xl sm:text-4xl">IMPULSO NERVIOSO</span>
         </h1>
-        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">UNIDAD 4 - SISTEMA NERVIOSO (APSD)</p>
+        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">MODO AVENTURA INTERACTIVA</p>
       </header>
 
-      <div class="my-4 flex flex-col items-center justify-center animate-energy">
+      <div class="my-4 flex flex-col items-center justify-center">
         <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950/80 p-2 shadow-[0_0_25px_#00f6ff]">
           <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Sistema Nervioso" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
         </div>
-        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Iniciar Recorrido Anatómico ⚡</span>
+        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ ¡Explora tocando la anatomía! ⚡</span>
       </div>
 
       <footer class="w-full mb-2">
         <button id="btn-to-view2" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          COMENZAR <i class="fa-solid fa-bolt ml-2"></i>
+          COMENZAR AVENTURA <i class="fa-solid fa-play ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA 2: INSTRUCCIONES / NARRATIVA ================= -->
+    <!-- ================= VISTA 2: INSTRUCCIONES ================= -->
     <section id="view-2" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
-        <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider">DINÁMICA DEL VIAJE</h2>
+        <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider">MECÁNICA DEL JUEGO</h2>
       </header>
 
       <div class="my-auto w-full p-4 sm:p-5 bg-purple-950/90 border-2 border-cyan-400 rounded-lg shadow-[0_0_15px_#00f6ff] text-left">
         <div class="flex items-center gap-2 mb-3 border-b-2 border-pink-500 pb-2">
-          <i class="fa-solid fa-book-medical text-pink-400 text-xl"></i>
-          <span class="text-xs sm:text-sm text-cyan-300 uppercase">¿CÓMO FUNCIONA ESTE SITE?</span>
+          <i class="fa-solid fa-gamepad text-pink-400 text-xl"></i>
+          <span class="text-xs sm:text-sm text-cyan-300 uppercase">INSTRUCCIONES TÁCTILES</span>
         </div>
         
         <p class="text-xs sm:text-sm leading-relaxed text-gray-100 font-vt323 text-xl sm:text-2xl my-2">
-          "Te convertirás en un impulso eléctrico recorriendo el sistema nervioso humano. En cada una de las 5 fases dispondrás de una <b>explicación teórica oficial del tema</b> con sus esquemas y contenidos clave. Al pulsar 'Continuar al Reto', pondrás a prueba lo aprendido mediante preguntas interactivas."
+          "Eres un impulso eléctrico. En cada fase verás una <b>imagen anatómica real</b>. Toca las diferentes zonas clave de la imagen para descubrir sus funciones sin textos aburridos y, cuando estés listo, supera el minireto eléctrico para avanzar."
         </p>
 
         <div class="mt-3 pt-2 border-t border-purple-800 text-[10px] sm:text-xs text-pink-300 space-y-1">
-          <p>🧠 <b>Fases del Recorrido:</b></p>
-          <p>• Fase 1: Microestructura neuronal y sinapsis.</p>
-          <p>• Fase 2: El Encéfalo (Telencéfalo, Diencéfalo, Tronco y Cerebelo).</p>
-          <p>• Fase 3: Médula espinal, meninges y líquido cefalorraquídeo.</p>
-          <p>• Fase 4: Sistema Nervioso Periférico (Somático y Autónomo).</p>
-          <p>• Fase 5: Exploración neurológica (TC y RM).</p>
+          <p>🎮 <b>Dinámica por Fase:</b></p>
+          <p>1. Explora los puntos interactivos sobre la foto.</p>
+          <p>2. Responde la pregunta flash para activar la sinapsis.</p>
+          <p>3. Desbloquea la siguiente zona del cuerpo humano.</p>
         </div>
       </div>
 
       <footer class="w-full mb-2">
         <button id="btn-start-game" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          ENTRAR A LA FASE 1 <i class="fa-solid fa-play ml-2"></i>
+          SALTAR AL SISTEMA NERVIOSO <i class="fa-solid fa-bolt ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA 3: FASE (TEORÍA + RETO) ================= -->
+    <!-- ================= VISTA 3: FASE INTERACTIVA (IMAGEN + PUNTOS CALIENTES + RETO) ================= -->
     <section id="view-3" class="hidden h-full flex flex-col justify-between items-center relative">
       
       <!-- Marcador Superior -->
       <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
-          <span class="text-pink-400">FASE:</span>
+          <span class="text-pink-400">ZONA:</span>
           <span id="phase-indicator" class="text-yellow-300">1 / 5</span>
         </div>
         <div>
           <span class="text-cyan-400">ESTADO:</span>
-          <span id="mode-indicator" class="text-green-400">ESTUDIO TEÓRICO</span>
+          <span id="mode-indicator" class="text-green-400">EXPLORACIÓN TÁCTIL</span>
         </div>
       </div>
 
-      <!-- Contenedor Dinámico (Teoría o Pregunta) -->
-      <div id="content-box" class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 sm:p-4 text-left flex-grow flex flex-col justify-between overflow-y-auto">
-        <!-- Se inyecta por JavaScript -->
+      <!-- Contenedor del Juego Visual -->
+      <div id="game-box" class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between overflow-y-auto">
+        <!-- Se inyecta dinámicamente vía JS -->
       </div>
 
     </section>
@@ -202,7 +203,7 @@
       <div class="relative z-10 flex flex-col justify-between h-full w-full items-center">
         <header class="mt-2">
           <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider animate-bounce">
-            ¡VIAJE COMPLETADO CON ÉXITO!
+            ¡MISIÓN NEURONAL COMPLETADA!
           </h2>
         </header>
 
@@ -212,19 +213,16 @@
             <span>🧠</span>
           </div>
           <h3 class="text-sm sm:text-base text-cyan-300 mb-2 uppercase tracking-wide">
-            ¡ENHORABUENA!
+            ¡EXCELENTE TRABAJO!
           </h3>
           <p class="text-xs sm:text-sm text-yellow-300 font-vt323 text-2xl sm:text-3xl leading-relaxed my-2">
-            "Has dominado todos los contenidos de la Unidad 4"
-          </p>
-          <p class="text-[10px] text-pink-300 font-vt323 text-xl mt-2">
-            Neuronas, Encéfalo, Médula, SNP y Técnicas de Imagen repasadas.
+            "Has recorrido todas las estructuras del sistema nervioso con éxito."
           </p>
         </div>
 
         <footer class="w-full mb-2 z-10">
           <button id="btn-restart" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-            REPETIR EL VIAJE <i class="fa-solid fa-rotate-right ml-2"></i>
+            JUGAR DE NUEVO <i class="fa-solid fa-rotate-right ml-2"></i>
           </button>
         </footer>
       </div>
@@ -236,14 +234,14 @@
         <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
           <span id="feedback-icon" class="text-4xl">💡</span>
           <div>
-            <h3 id="feedback-status" class="text-sm sm:text-base text-yellow-300">¡EVALUACIÓN!</h3>
+            <h3 id="feedback-status" class="text-sm sm:text-base text-yellow-300">¡RESULTADO!</h3>
           </div>
         </div>
         <p id="feedback-text" class="text-xs sm:text-sm text-gray-100 leading-relaxed font-vt323 text-2xl mb-4">
-          Explicación pedagógica...
+          Explicación...
         </p>
         <button id="btn-next-step" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer">
-          CONTINUAR RUTA <i class="fa-solid fa-forward ml-1"></i>
+          SIGUIENTE ZONA <i class="fa-solid fa-forward ml-1"></i>
         </button>
       </div>
     </div>
@@ -251,82 +249,97 @@
   </main>
 
   <script>
-    // ================= DATOS OFICIALES DE LAS 5 FASES (TEORÍA + PREGUNTA) =================
-    const phasesData = [
+    // ================= DATOS INTERACTIVOS (IMÁGENES + PUNTOS CLAVE + RETO) =================
+    const gameData = [
       {
         phaseNum: "1 / 5",
-        title: "FASE 1: MICROESTRUCTURA Y NEURONAS",
-        theoryTitle: "Conceptos Clave: Neuronas y Sinapsis",
-        theoryText: "El sistema nervioso permite reaccionar a estímulos internos y externos[cite: 10]. Las únicas células capaces de transmitir impulsos eléctricos son las <b>neuronas</b>, formadas por un cuerpo celular (soma), <b>dendritas</b> (reciben y conducen el impulso hacia el soma) y el <b>axón</b> (conduce el impulso lejos del soma y puede estar recubierto de mielina para mayor velocidad)[cite: 12, 13]. Las células de la <b>neuroglía</b> dan soporte y nutrición[cite: 11, 16]. El impulso eléctrico viaja a través de la <b>sinapsis</b> entre neuronas[cite: 18].",
-        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=600&q=80",
-        caption: "Transmisión a través del axón y sinapsis",
-        question: "¿Qué parte de la neurona se encarga de conducir el impulso nervioso lejos del cuerpo celular o soma?",
+        title: "FASE 1: MICROESTRUCTURA NEURONAL",
+        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80",
+        caption: "Toca las zonas de la neurona para entender su función",
+        hotspots: [
+          { title: "Dendritas", desc: "Reciben y conducen el impulso eléctrico hacia el cuerpo celular[cite: 9]." },
+          { title: "Axón y Mielina", desc: "Conduce el impulso lejos del soma. La mielina acelera la transmisión[cite: 9]." },
+          { title: "Sinapsis", desc: "Espacio de comunicación química entre neuronas[cite: 14]." }
+        ],
+        question: "¿Qué parte de la neurona conduce el impulso nervioso lejos del soma con ayuda de la mielina?",
         options: [
-          { text: "Las Dendritas", correct: false, reason: "Las dendritas reciben y conducen el impulso hacia el cuerpo celular, no lejos de él." },
-          { text: "El Axón", correct: true, reason: "¡Correcto! El axón conduce el impulso eléctrico lejos del soma y puede llevar mielina." },
-          { text: "Los Astrocitos", correct: false, reason: "Los astrocitos son células de soporte de la neuroglía, no transmiten impulsos." }
+          { text: "Las Dendritas", correct: false, reason: "Las dendritas llevan el impulso hacia el cuerpo celular." },
+          { text: "El Axón", correct: true, reason: "¡Correcto! El axón aleja el impulso del soma." },
+          { text: "La Neuroglía", correct: false, reason: "La neuroglía da soporte, no transmite el impulso principal." }
         ]
       },
       {
         phaseNum: "2 / 5",
-        title: "FASE 2: EL ENCÉFALO (CENTRO DE CONTROL)",
-        theoryTitle: "Conceptos Clave: Telencéfalo, Diencéfalo, Tronco y Cerebelo",
-        theoryText: "El encéfalo está protegido por el cráneo y se une a la médula por el foramen magno[cite: 21]. Se divide en:<br>• <b>Telencéfalo (Cerebro):</b> Hemisferios unidos por el cuerpo calloso y corteza con 4 lóbulos (frontal, parietal, temporal, occipital)[cite: 34, 35].<br>• <b>Diencéfalo:</b> Tálamo, epitálamo (glándula pineal y melatonina), hipotálamo e hipófisis[cite: 37, 40].<br>• <b>Tronco Encefálico:</b> Mesencéfalo, protuberancia y bulbo raquídeo (reflejos involuntarios)[cite: 41].<br>• <b>Cerebelo:</b> Coordinación inconsciente para movimientos suaves y no temblorosos[cite: 42].",
-        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=80",
-        caption: "Estructura del Encéfalo y Cerebelo",
-        question: "Llegas al Cerebelo. ¿Cuál es su función principal según el temario?",
+        title: "FASE 2: EL ENCÉFALO",
+        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80",
+        caption: "Toca las regiones clave del centro de control",
+        hotspots: [
+          { title: "Corteza Cerebral", desc: "Funciones superiores y lóbulos (frontal, parietal, temporal, occipital)[cite: 31, 32]." },
+          { title: "Diencéfalo", desc: "Incluye el tálamo, hipotálamo y la glándula pineal (melatonina)[cite: 33]." },
+          { title: "Cerebelo", desc: "Coordinación inconsciente del movimiento para que sea suave[cite: 38]." }
+        ],
+        question: "¿Qué estructura del encéfalo coordina de forma inconsciente el movimiento para que sea fluido?",
         options: [
-          { text: "Razonamiento y lenguaje superior", correct: false, reason: "Esas son funciones de la corteza cerebral (telencéfalo)." },
-          { text: "Coordinación inconsciente del movimiento para que sea suave y no tembloroso", correct: true, reason: "¡Excelente! El cerebelo coordina de forma inconsciente el equilibrio y la suavidad motora." },
-          { text: "Segregar melatonina", correct: false, reason: "La melatonina la produce la glándula pineal en el epitálamo." }
+          { text: "El Cerebelo", correct: true, reason: "¡Exacto! El cerebelo evita movimientos espásticos o temblorosos[cite: 38]." },
+          { text: "El Lóbulo Frontal", correct: false, reason: "El lóbulo frontal genera la orden voluntaria, pero no coordina la suavidad." },
+          { text: "El Epitálamo", correct: false, reason: "El epitálamo regula los ciclos de sueño con melatonina." }
         ]
       },
       {
         phaseNum: "3 / 5",
-        title: "FASE 3: MÉDULA ESPINAL Y PROTECCIÓN",
-        theoryTitle: "Conceptos Clave: Médula y Meninges",
-        theoryText: "La médula espinal es un cilindro situado en el conducto vertebral (desde el agujero magno hasta L1-L2)[cite: 22]. Funciona como vía de conducción y centro de reflejos[cite: 22]. Está protegida por las <b>meninges</b> (de fuera a dentro: <b>duramadre, aracnoides y piamadre</b>)[cite: 23]. Entre las capas se forman espacios como el <b>espacio subaracnoideo</b>, donde circula el <b>Líquido Cefalorraquídeo (LCR)</b>, que actúa como amortiguador y nutriente[cite: 27, 31, 32].",
-        image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&q=80",
-        caption: "Capas Meníngeas y LCR",
-        question: "¿En qué espacio meníngeo circula la mayor parte del Líquido Cefalorraquídeo (LCR)?",
+        title: "FASE 3: MÉDULA Y MENINGES",
+        image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=700&q=80",
+        caption: "Toca las capas protectoras del SNC",
+        hotspots: [
+          { title: "Duramadre", desc: "Capa externa y gruesa en contacto directo con el hueso[cite: 20]." },
+          { title: "Aracnoides", desc: "Capa intermedia con forma de tela de araña[cite: 21]." },
+          { title: "Espacio Subaracnoideo y LCR", desc: "Contiene el Líquido Cefalorraquídeo que amortigua y nutre el SNC[cite: 27, 28]." }
+        ],
+        question: "¿Dónde se localiza principalmente el Líquido Cefalorraquídeo (LCR)?",
         options: [
-          { text: "Espacio Subaracnoideo", correct: true, reason: "¡Correcto! El líquido cefalorraquídeo fluye por el espacio subaracnoideo protegiendo el SNC." },
-          { text: "Espacio Epidural", correct: false, reason: "El espacio epidural se localiza por encima de la duramadre." },
-          { text: "Espacio Subdural", correct: false, reason: "El espacio subdural se sitúa entre la duramadre y la aracnoides." }
+          { text: "Espacio Subaracnoideo", correct: true, reason: "¡Correcto! El LCR fluye por debajo de la aracnoides actuando como amortiguador[cite: 27]." },
+          { text: "Espacio Epidural", correct: false, reason: "El espacio epidural se encuentra por encima de la duramadre[cite: 24]." },
+          { text: "Dentro del cráneo sin meninges", correct: false, reason: "El SNC está rodeado por las tres capas meníngeas[cite: 19]." }
         ]
       },
       {
         phaseNum: "4 / 5",
-        title: "FASE 4: SISTEMA NERVIOSO PERIFÉRICO (SNP)",
-        theoryTitle: "Conceptos Clave: Nervios y SN Autónomo",
-        theoryText: "El SNP transporta información mediante nervios sensitivos (aferentes) y motores (eferentes)[cite: 46]. Se divide en:<br>• <b>SNP Voluntario o Somático:</b> 12 pares craneales y pares espinales en plexos[cite: 50, 53].<br>• <b>SN Autónomo o Vegetativo:</b> Control involuntario de músculo liso, cardíaco y glándulas[cite: 56]. Se divide en <b>Simpático</b> (prepara para la lucha o huida, toracolumbar) y <b>Parasimpático</b> (descanso y relajación, craneosacra)[cite: 56, 57].",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
-        caption: "Red de Nervios Periféricos y Autónomo",
-        question: "¿Qué división del SN Autónomo se encarga de preparar al cuerpo para la respuesta de 'lucha o huida'?",
+        title: "FASE 4: SISTEMA NERVIOSO PERIFÉRICO",
+        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80",
+        caption: "Toca para ver los componentes del SNP",
+        hotspots: [
+          { title: "Nervios Sensitivos", desc: "Llevan la información en sentido ascendente (aferente) hacia el SNC[cite: 43]." },
+          { title: "SNP Voluntario", desc: "Formado por 12 pares craneales y nervios espinales[cite: 46, 49]." },
+          { title: "SN Autónomo (Simpático/Parasimpático)", desc: "Control involuntario de órganos, vísceras y glándulas[cite: 52]." }
+        ],
+        question: "¿Qué división del Sistema Nervioso Autónomo prepara al organismo para situaciones de lucha o huida?",
         options: [
-          { text: "Sistema Nervioso Somático", correct: false, reason: "El somático controla voluntariamente el músculo esquelético." },
-          { text: "Sistema Parasimpático", correct: false, reason: "El parasimpático se activa en situaciones de reposo y relajación." },
-          { text: "Sistema Simpático", correct: true, reason: "¡Así es! El simpático acelera el ritmo cardíaco y prepara para la acción o estrés." }
+          { text: "Sistema Simpático", correct: true, reason: "¡Así es! El simpático acelera el ritmo y prepara para la acción[cite: 52]." },
+          { text: "Sistema Parasimpático", correct: false, reason: "El parasimpático se encarga de la relajación y el descanso[cite: 52]." },
+          { text: "Sistema Somático", correct: false, reason: "El somático controla voluntariamente el músculo esquelético." }
         ]
       },
       {
         phaseNum: "5 / 5",
-        title: "FASE 5: EXPLORACIÓN DEL SISTEMA NERVIOSO",
-        theoryTitle: "Conceptos Clave: Pruebas de Imagen (TC vs RM)",
-        theoryText: "Para estudiar el sistema nervioso contamos con el examen neurológico, el electroencefalograma y las pruebas de imagen avanzadas[cite: 58]. La elección entre TC y RM depende de la clínica:<br>• <b>TC (Tomografía Computarizada):</b> De elección en emergencias, traumatismos craneoencefálicos o para buscar lesiones óseas y calcificaciones[cite: 58].<br>• <b>RM (Resonancia Magnética):</b> Ideal para tejidos blandos, tumores cerebrales, lesiones isquémicas tempranas y enfermedades desmielinizantes[cite: 58].",
-        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80",
-        caption: "Tecnología de Diagnóstico por Imagen",
-        question: "Ante una urgencia por un traumatismo craneoencefálico en el hospital, ¿qué técnica de imagen se utiliza habitualmente de forma prioritaria?",
+        title: "FASE 5: EXPLORACIÓN NEUROLÓGICA",
+        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&q=80",
+        caption: "Toca para conocer las pruebas diagnósticas",
+        hotspots: [
+          { title: "Tomografía (TC)", desc: "De elección rápida en emergencias, traumatismos y lesiones óseas[cite: 55]." },
+          { title: "Resonancia Magnética (RM)", desc: "Ideal para tejidos blandos, tumores y lesiones isquémicas[cite: 55]." },
+          { title: "Examen Neurológico", desc: "Valoración clínica inicial del estado del paciente." }
+        ],
+        question: "Ante una urgencia por un traumatismo craneoencefálico, ¿qué prueba se prioriza?",
         options: [
-          { text: "Tomografía Computarizada (TC)", correct: true, reason: "¡Correcto! La TC es la prueba rápida de elección en emergencias y traumatismos craneales." },
-          { text: "Resonancia Magnética (RM)", correct: false, reason: "La RM se reserva para estudios detallados de tejido blando o desmielinización, al ser más lenta." },
-          { text: "Ecografía fontanelar", correct: false, reason: "La ecografía se usa en menores de 18 meses con fontanelas abiertas." }
+          { text: "Tomografía Computarizada (TC)", correct: true, reason: "¡Correcto! La TC es rápida y muy útil en urgencias y fracturas óseas[cite: 55]." },
+          { text: "Resonancia Magnética (RM)", correct: false, reason: "La RM es más lenta, reservada para detalles tisulares específicos[cite: 55]." },
+          { text: "Electroencefalograma exclusivo", correct: false, reason: "El EEG mide actividad eléctrica, no traumatismos óseos inmediatos." }
         ]
       }
     ];
 
     let currentPhase = 0;
-    let currentMode = 'theory'; // 'theory' o 'question'
+    let mode = 'explore'; // 'explore' o 'quiz'
     let isCurrentCorrect = false;
 
     // Control de Audio
@@ -348,7 +361,7 @@
       }
     });
 
-    // Navegación de vistas iniciales
+    // Navegación de vistas
     const view1 = document.getElementById('view-1');
     const view2 = document.getElementById('view-2');
     const view3 = document.getElementById('view-3');
@@ -363,8 +376,8 @@
       view2.classList.add('hidden');
       view3.classList.remove('hidden');
       currentPhase = 0;
-      currentMode = 'theory';
-      renderPhase();
+      mode = 'explore';
+      renderGame();
     });
 
     document.getElementById('btn-restart').addEventListener('click', () => {
@@ -372,44 +385,69 @@
       view1.classList.remove('hidden');
     });
 
-    // Renderizar Fase (Teoría o Pregunta)
-    function renderPhase() {
-      const data = phasesData[currentPhase];
+    // Renderizar modo exploración interactiva o preguntas
+    function renderGame() {
+      const data = gameData[currentPhase];
       document.getElementById('phase-indicator').textContent = data.phaseNum;
       
-      const box = document.getElementById('content-box');
+      const box = document.getElementById('game-box');
       box.innerHTML = '';
 
-      if (currentMode === 'theory') {
-        document.getElementById('mode-indicator').textContent = "1. ESTUDIO TEÓRICO";
+      if (mode === 'explore') {
+        document.getElementById('mode-indicator').textContent = "1. EXPLORACIÓN VISUAL";
         document.getElementById('mode-indicator').className = "text-cyan-300";
+
+        let hotspotsHtml = '';
+        data.hotspots.forEach((hs, idx) => {
+          hotspotsHtml += `
+            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer text-left hs-btn" data-index="${idx}">
+              📍 ${hs.title}
+            </button>
+          `;
+        });
 
         box.innerHTML = `
           <div>
-            <span class="text-xs sm:text-sm neon-cyan block mb-1">${data.title}</span>
-            <h3 class="text-xs sm:text-sm text-yellow-300 font-bold mb-2">${data.theoryTitle}</h3>
-            <p class="text-xs sm:text-sm text-gray-200 leading-relaxed font-vt323 text-xl sm:text-2xl mb-3">
-              ${data.theoryText}
-            </p>
+            <span class="text-xs neon-cyan block mb-1">${data.title}</span>
+            <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">${data.caption}</p>
           </div>
-          <div class="my-2 h-32 sm:h-40 w-full rounded border-2 border-cyan-400 overflow-hidden relative bg-black flex items-center justify-center">
-            <img src="${data.image}" alt="Teoría" class="w-full h-full object-cover">
-            <span class="absolute bottom-0 inset-x-0 bg-black/80 text-[9px] text-cyan-200 text-center py-1 font-vt323 text-lg">
-              ${data.caption}
-            </span>
+          
+          <!-- Imagen con Botones Hotspots Superpuestos -->
+          <div class="relative w-full h-40 sm:h-52 rounded border-2 border-cyan-400 overflow-hidden bg-black my-2">
+            <img src="${data.image}" alt="Anatomía" class="w-full h-full object-cover opacity-80">
+            <div class="absolute inset-0 p-3 grid grid-cols-3 gap-2 items-end">
+              ${hotspotsHtml}
+            </div>
           </div>
-          <button id="btn-goto-question" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-2">
-            PASAR AL RETO DE ESTA FASE <i class="fa-solid fa-arrow-right ml-1"></i>
+
+          <!-- Cuadro de Explicación Dinámica -->
+          <div id="hotspot-info" class="bg-purple-900/90 border border-yellow-400 p-2 rounded text-[10px] sm:text-xs text-gray-200 font-vt323 text-xl mb-2">
+            👉 Haz clic en los botones superiores sobre la imagen para inspeccionar cada parte.
+          </div>
+
+          <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-1">
+            SUPERAR EL RETO DE ESTA ZONA <i class="fa-solid fa-arrow-right ml-1"></i>
           </button>
         `;
 
-        document.getElementById('btn-goto-question').addEventListener('click', () => {
-          currentMode = 'question';
-          renderPhase();
+        // Eventos para los hotspots
+        document.querySelectorAll('.hs-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            const idx = e.currentTarget.getAttribute('data-index');
+            const hs = data.hotspots[idx];
+            document.getElementById('hotspot-info').innerHTML = `<b>📌 ${hs.title}:</b> ${hs.desc}`;
+          });
+        });
+
+        document.getElementById('btn-goto-quiz').addEventListener('click', () => {
+          mode = 'quiz';
+          renderGame();
         });
 
       } else {
-        document.getElementById('mode-indicator').textContent = "2. RETO INTERACTIVO";
+        document.getElementById('mode-indicator').textContent = "2. MINIRETO ELÉCTRICO";
         document.getElementById('mode-indicator').className = "text-pink-400";
 
         let optionsHtml = '';
@@ -423,16 +461,16 @@
 
         box.innerHTML = `
           <div>
-            <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA DE EVALUACIÓN</span>
+            <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH</span>
             <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
               ${data.question}
             </h3>
           </div>
-          <div class="grid grid-cols-1 gap-2 my-2">
+          <div class="grid grid-cols-1 gap-2 my-3">
             ${optionsHtml}
           </div>
-          <button id="btn-back-theory" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2 text-[10px] rounded cursor-pointer mt-2">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Repasar teoría de esta fase
+          <button id="btn-back-explore" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2 text-[10px] rounded cursor-pointer">
+            <i class="fa-solid fa-arrow-left mr-1"></i> Volver a explorar la imagen
           </button>
         `;
 
@@ -443,9 +481,9 @@
           });
         });
 
-        document.getElementById('btn-back-theory').addEventListener('click', () => {
-          currentMode = 'theory';
-          renderPhase();
+        document.getElementById('btn-back-explore').addEventListener('click', () => {
+          mode = 'explore';
+          renderGame();
         });
       }
     }
@@ -462,11 +500,11 @@
 
       if (option.correct) {
         feedbackIcon.textContent = "✅";
-        feedbackStatus.textContent = "¡RESPUESTA CORRECTA!";
+        feedbackStatus.textContent = "¡IMPULSO ACTIVADO!";
         feedbackStatus.className = "text-sm sm:text-base text-green-400 font-bold";
       } else {
         feedbackIcon.textContent = "⚠️";
-        feedbackStatus.textContent = "¡RESPUESTA INCORRECTA!";
+        feedbackStatus.textContent = "¡CORRIENTE CORTADA!";
         feedbackStatus.className = "text-sm sm:text-base text-red-400 font-bold";
       }
 
@@ -477,9 +515,9 @@
       modal.classList.add('hidden');
       if (isCurrentCorrect) {
         currentPhase++;
-        if (currentPhase < phasesData.length) {
-          currentMode = 'theory';
-          renderPhase();
+        if (currentPhase < gameData.length) {
+          mode = 'explore';
+          renderGame();
         } else {
           view3.classList.add('hidden');
           viewWin.classList.remove('hidden');
