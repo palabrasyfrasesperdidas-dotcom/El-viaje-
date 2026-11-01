@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   
   <style>
     body {
@@ -133,7 +135,6 @@
 
       <div class="my-4 flex flex-col items-center justify-center">
         <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950 p-2 shadow-[0_0_25px_#00f6ff] flex items-center justify-center">
-          <!-- Imagen 1 Corregida: Esquema Neuronal Claro -->
           <svg class="w-full h-full text-cyan-400 p-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a4 4 0 00-4 4c0 1.95 1.4 3.58 3.25 3.93L9 15l-3 1-2 4 4-2 1-3 5.07-2.25A4 4 0 0012 2z" />
             <circle cx="12" cy="6" r="1.5" fill="#ff007f" />
@@ -150,19 +151,19 @@
       </footer>
     </section>
 
-    <!-- ================= VISTA 2: VÍDEO EDUCATIVO (Limpio de 0:07 a 2:30) ================= -->
+    <!-- ================= VISTA 2: VÍDEO EDUCATIVO (Control estricto hasta 2:30) ================= -->
     <section id="view-zoom" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">FASE 1: VIAJE VISUAL POR LA NEURONA</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <!-- Contenedor del Vídeo sin interferencias (0:07 a 2:30) -->
         <div class="w-full h-60 sm:h-72 rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff]">
-          <iframe id="yt-player" class="w-full h-full" src="https://www.youtube.com/embed/9069nvkob6c?start=7&end=150&rel=0" title="Vídeo Microestructura Neuronal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <!-- Contenedor del reproductor gestionado por la API de YouTube -->
+          <div id="youtube-player"></div>
         </div>
         <p class="text-[10px] sm:text-xs text-cyan-300 font-vt323 text-xl mt-2">
-          Observa el vídeo explicativo antes de pasar a la exploración táctil.
+          El vídeo se detendrá automáticamente en el minuto 2:30.
         </p>
       </div>
 
@@ -197,8 +198,6 @@
         
         <!-- Esquema Anatómico Interactivo SVG Nítido -->
         <div class="relative w-full h-52 sm:h-64 rounded-lg border-2 border-cyan-400 bg-purple-950 p-2 my-2 flex items-center justify-center overflow-hidden">
-          
-          <!-- Dibujo vectorial nítido de una neurona multipolar -->
           <svg class="w-full h-full text-cyan-300 opacity-90" viewBox="0 0 500 200">
             <!-- Dendritas -->
             <path d="M 40 50 L 100 100 M 30 120 L 100 100 M 50 160 L 100 100" stroke="#ff007f" stroke-width="4" stroke-linecap="round"/>
@@ -300,7 +299,7 @@
       </footer>
     </section>
 
-    <!-- CUADRO DE DIÁLOGO EMERGENTE PARA EXPLICACIÓN DE PARTES (PUNTO 3) -->
+    <!-- CUADRO DE DIÁLOGO EMERGENTE PARA EXPLICACIÓN DE PARTES -->
     <div id="info-modal" class="hidden absolute inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
       <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-5 text-left relative shadow-[0_0_30px_#00f6ff]">
         <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
@@ -354,6 +353,44 @@
       }
     });
 
+    // Control del Reproductor de YouTube con control estricto de tiempo (0:07 a 2:30)
+    let player;
+    let timeCheckInterval;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        videoId: '9069nvkob6c',
+        playerVars: {
+          'start': 7,
+          'rel': 0,
+          'autoplay': 1,
+          'controls': 1
+        },
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      // Si el vídeo se está reproduciendo, iniciamos el chequeo de tiempo estricto
+      if (event.data == YT.PlayerState.PLAYING) {
+        if (timeCheckInterval) clearInterval(timeCheckInterval);
+        timeCheckInterval = setInterval(() => {
+          if (player && player.getCurrentTime) {
+            // 150 segundos = 2 minutos y 30 segundos
+            if (player.getCurrentTime() >= 150) {
+              player.pauseVideo();
+              player.seekTo(7); // Opcional: rebobina al inicio del fragmento
+              clearInterval(timeCheckInterval);
+            }
+          }
+        }, 500);
+      } else {
+        if (timeCheckInterval) clearInterval(timeCheckInterval);
+      }
+    }
+
     // Elementos de Vistas
     const view1 = document.getElementById('view-1');
     const viewZoom = document.getElementById('view-zoom');
@@ -365,17 +402,25 @@
     document.getElementById('btn-to-view2').addEventListener('click', () => {
       view1.classList.add('hidden');
       viewZoom.classList.remove('hidden');
-      // Ocultar scanlines en la vista del vídeo para máxima nitidez (Punto 2)
       scanlinesLayer.classList.add('hidden');
+      // Si el reproductor ya está creado, reproducir al entrar
+      if (player && player.playVideo) {
+        player.seekTo(7);
+        player.playVideo();
+      }
     });
 
     document.getElementById('btn-next-zoom').addEventListener('click', () => {
+      if (player && player.pauseVideo) {
+        player.pauseVideo();
+      }
+      if (timeCheckInterval) clearInterval(timeCheckInterval);
       viewZoom.classList.add('hidden');
       viewExplore.classList.remove('hidden');
       scanlinesLayer.classList.remove('hidden');
     });
 
-    // Cuadro de Diálogo Emergente para las partes (Punto 3)
+    // Cuadro de Diálogo Emergente para las partes de la neurona
     const infoModal = document.getElementById('info-modal');
     const infoTitle = document.getElementById('info-modal-title');
     const infoDesc = document.getElementById('info-modal-desc');
@@ -440,7 +485,7 @@
     });
 
     document.getElementById('btn-next-zone').addEventListener('click', () => {
-      alert("¡Zona 1 perfeccionada! Cuando desees avanzaremos con el diseño de la Zona 2 (El Encéfalo).");
+      alert("¡Zona 1 perfeccionada al 100%! Cuando desees avanzaremos con el diseño de la Zona 2 (El Encéfalo).");
     });
   </script>
 </body>
