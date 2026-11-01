@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>El Viaje del Impulso Nervioso - Zona 1 y 2</title>
+  <title>El Viaje del Impulso Nervioso - Unidad 4 (APSD)</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -143,13 +143,35 @@
       </div>
 
       <footer class="w-full mb-2">
-        <button id="btn-to-view2" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+        <button id="btn-to-intro" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
           INICIAR VIAJE <i class="fa-solid fa-play ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA ZONA 1: VÍDEO NEURONA (0:07 a 2:30) ================= -->
+    <!-- ================= VISTA INTRODUCCIÓN GENERAL (Vídeo 0:04 a 1:10) ================= -->
+    <section id="view-intro-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
+      <header>
+        <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">INTRODUCCIÓN: SISTEMA NERVIOSO</h2>
+      </header>
+
+      <div class="my-auto w-full flex flex-col items-center">
+        <div class="w-full h-60 sm:h-72 rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff]">
+          <iframe id="iframe-intro" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/-_GXk4HZML4?start=4&end=70&autoplay=1&rel=0" title="Vídeo Introducción Sistema Nervioso" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="text-[10px] sm:text-xs text-cyan-300 font-vt323 text-xl mt-2">
+          Vídeo introductorio (reproduciendo de 0:04 a 1:10).
+        </p>
+      </div>
+
+      <footer class="w-full mb-2">
+        <button id="btn-intro-to-z1" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+          IR A ZONA 1 (NEURONA) <i class="fa-solid fa-arrow-right ml-2"></i>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ================= VISTA ZONA 1: VÍDEO NEURONA (Completo) ================= -->
     <section id="view-z1-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">ZONA 1: MICROESTRUCTURA NEURONAL</h2>
@@ -157,10 +179,10 @@
 
       <div class="my-auto w-full flex flex-col items-center">
         <div class="w-full h-60 sm:h-72 rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff]">
-          <iframe id="iframe-z1" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/bB19dD2Vjvw?start=7&end=150&autoplay=1&rel=0" title="Vídeo Neurona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="iframe-z1" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/_6vI8H4qrnY?autoplay=1&rel=0" title="Vídeo Neurona Completo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <p class="text-[10px] sm:text-xs text-cyan-300 font-vt323 text-xl mt-2">
-          Vídeo explicativo (reproduciendo de 0:07 a 2:30).
+          Vídeo completo sobre la microestructura de la neurona.
         </p>
       </div>
 
@@ -242,7 +264,7 @@
           <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z1-btn" data-correct="true" data-reason="¡Correcto! El axón conduce el impulso lejos del soma y la mielina incrementa la velocidad de transmisión[cite: 5].">
             ⚡ El Axón.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z1-btn" data-correct="false" data-reason="Los astrocitos son células de soporte de la neuroglía, no conducen el potencial de acción[cite: 4, 9].">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z1-btn" data-correct="false" data-reason="Los astrocitos son células de soporte de la neuroglía, no conducen el potencial de acción[cite: 4].">
             ⚡ Los Astrocitos.
           </button>
         </div>
@@ -289,22 +311,22 @@
         </div>
         
         <div class="grid grid-cols-2 gap-3 my-auto p-2">
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="TELENCÉFALO (CEREBRO)" data-desc="Parte principal del encéfalo[cite: 27]. Contiene los hemisferios derecho e izquierdo (unidos por el cuerpo calloso), la corteza cerebral con sus lóbulos (frontal, parietal, temporal y occipital) y los ganglios basales. En él residen las funciones cerebrales superiores[cite: 27, 28, 29].">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="TELENCÉFALO (CEREBRO)" data-desc="Parte principal del encéfalo. Contiene los hemisferios derecho e izquierdo (unidos por el cuerpo calloso), la corteza cerebral con sus lóbulos (frontal, parietal, temporal y occipital) y los ganglios basales. En él residen las funciones cerebrales superiores.">
             <i class="fa-solid fa-brain text-xl text-pink-400"></i>
             Telencéfalo
           </button>
           
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="DIENCÉFALO" data-desc="Situado encima del tronco del encéfalo[cite: 30]. Formado por estructuras clave como el tálamo, el epitálamo (glándula pineal y melatonina), el hipotálamo y la hipófisis, muy relacionados con el sistema endocrino y la regulación emocional[cite: 30].">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="DIENCÉFALO" data-desc="Situado encima del tronco del encéfalo. Formado por estructuras clave como el tálamo, el epitálamo (glándula pineal y melatonina), el hipotálamo y la hipófisis, muy relacionados con el sistema endocrino y la regulación emocional.">
             <i class="fa-solid fa-circle-nodes text-xl text-cyan-400"></i>
             Diencéfalo
           </button>
 
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="TRONCO ENCEFÁLICO" data-desc="Formado por el mesencéfalo, la protuberancia (o puente) y el bulbo raquídeo[cite: 34]. Está estrechamente relacionado con el control de los reflejos involuntarios[cite: 34] y las funciones vitales automáticas.">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="TRONCO ENCEFÁLICO" data-desc="Formado por el mesencéfalo, la protuberancia (o puente) y el bulbo raquídeo. Está estrechamente relacionado con el control de los reflejos involuntarios y las funciones vitales automáticas.">
             <i class="fa-solid fa-network-wired text-xl text-yellow-400"></i>
             Tronco Encefálico
           </button>
 
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="CEREBELO" data-desc="Situado por debajo del cerebro[cite: 35]. Su función principal es la coordinación inconsciente del movimiento para que sea suave, continuo y no tembloroso[cite: 35]. Controla el mismo lado del cuerpo en cada hemisferio[cite: 35].">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="CEREBELO" data-desc="Situado por debajo del cerebro. Su función principal es la coordinación inconsciente del movimiento para que sea suave, continuo y no tembloroso. Controla el mismo lado del cuerpo en cada hemisferio.">
             <i class="fa-solid fa-bullseye text-xl text-green-400"></i>
             Cerebelo
           </button>
@@ -327,18 +349,18 @@
         <div>
           <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH - ZONA 2</span>
           <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
-            ¿Cuál es la función principal del cerebelo dentro de la estructura del encéfalo?[cite: 35]
+            ¿Cuál es la función principal del cerebelo dentro de la estructura del encéfalo?
           </h3>
         </div>
 
         <div class="grid grid-cols-1 gap-2 my-3">
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="false" data-reason="El movimiento voluntario se origina en la corteza cerebral, no en el cerebelo[cite: 35].">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="false" data-reason="El movimiento voluntario se origina en la corteza cerebral, no en el cerebelo.">
             ⚡ Controlar de forma consciente los movimientos voluntarios complejos.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="true" data-reason="¡Correcto! El cerebelo realiza la coordinación inconsciente del movimiento para que sea suave y continuo[cite: 35].">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="true" data-reason="¡Correcto! El cerebelo realiza la coordinación inconsciente del movimiento para que sea suave y continuo.">
             ⚡ Coordinar de manera inconsciente los movimientos para que sean suaves y continuos.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="false" data-reason="La producción de melatonina se realiza en el epitálamo (glándula pineal)[cite: 30].">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-z2-btn" data-correct="false" data-reason="La producción de melatonina se realiza en el epitálamo (glándula pineal).">
             ⚡ Regular exclusivamente la producción de melatonina y el sueño.
           </button>
         </div>
@@ -359,7 +381,7 @@
         <div class="text-6xl mb-3">🧠⚡</div>
         <h3 class="text-sm text-cyan-300 mb-2 uppercase">¡Torre de control activada!</h3>
         <p class="text-xs text-yellow-300 font-vt323 text-2xl leading-relaxed">
-          Has recorrido con éxito el telencéfalo, diencéfalo, tronco encefálico y cerebelo[cite: 14]. Siguiente destino: **Zona 3 (Médula Espinal y Meninges)**.
+          Has recorrido con éxito el telencéfalo, diencéfalo, tronco encefálico y cerebelo. Siguiente destino: **Zona 3 (Médula Espinal y Meninges)**.
         </p>
       </div>
 
@@ -426,6 +448,7 @@
 
     // Elementos de Vistas
     const view1 = document.getElementById('view-1');
+    const viewIntroVideo = document.getElementById('view-intro-video');
     const viewZ1Video = document.getElementById('view-z1-video');
     const viewZ1Explore = document.getElementById('view-z1-explore');
     const viewZ1Quiz = document.getElementById('view-z1-quiz');
@@ -434,19 +457,29 @@
     const viewZ2Quiz = document.getElementById('view-z2-quiz');
     const viewZ2Win = document.getElementById('view-z2-win');
     const scanlinesLayer = document.getElementById('scanlines-layer');
+    const iframeIntro = document.getElementById('iframe-intro');
     const iframeZ1 = document.getElementById('iframe-z1');
     const iframeZ2 = document.getElementById('iframe-z2');
 
-    // Inicio -> Vídeo Zona 1
-    document.getElementById('btn-to-view2').addEventListener('click', () => {
+    // Inicio -> Vídeo Introducción General
+    document.getElementById('btn-to-intro').addEventListener('click', () => {
       view1.classList.add('hidden');
-      viewZ1Video.classList.remove('hidden');
+      viewIntroVideo.classList.remove('hidden');
       scanlinesLayer.classList.add('hidden');
+    });
+
+    // Vídeo Intro -> Vídeo Zona 1 (Neurona)
+    document.getElementById('btn-intro-to-z1').addEventListener('click', () => {
+      const srcIntro = iframeIntro.src;
+      iframeIntro.src = '';
+      iframeIntro.src = srcIntro;
+
+      viewIntroVideo.classList.add('hidden');
+      viewZ1Video.classList.remove('hidden');
     });
 
     // Zona 1 Vídeo -> Exploración Neurona
     document.getElementById('btn-z1-to-explore').addEventListener('click', () => {
-      // Pausar reemplazando temporalmente la ruta del iframe
       const srcZ1 = iframeZ1.src;
       iframeZ1.src = '';
       iframeZ1.src = srcZ1;
@@ -575,7 +608,7 @@
     });
 
     document.getElementById('btn-next-zone3').addEventListener('click', () => {
-      alert("¡Zona 2 completada! Cuando lo desees, prepararemos la Zona 3 (Médula Espinal y Meninges).");
+      alert("¡Zona 2 completada con éxito! Cuando quieras, abordamos la Zona 3 (Médula Espinal y Meninges).");
     });
   </script>
 </body>
