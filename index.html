@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>El Viaje del Impulso Nervioso - Arcade APSD</title>
+  <title>El Viaje del Impulso Nervioso - Zona 1</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -78,15 +78,15 @@
     }
 
     .btn-hotspot {
-      background: rgba(0, 246, 255, 0.15);
+      background: rgba(0, 246, 255, 0.2);
       border: 2px dashed #00f6ff;
       transition: all 0.2s ease;
     }
 
     .btn-hotspot:hover, .btn-hotspot.active {
-      background: rgba(255, 0, 127, 0.4);
-      border-color: #ff007f;
-      box-shadow: 0 0 15px #ff007f;
+      background: rgba(255, 0, 127, 0.5);
+      border-color: #ffe600;
+      box-shadow: 0 0 15px #ffe600;
     }
 
     .btn-option {
@@ -126,109 +126,158 @@
         <h1 class="text-xl sm:text-3xl neon-pink tracking-wider leading-relaxed">
           EL VIAJE DEL<br><span class="neon-cyan text-2xl sm:text-4xl">IMPULSO NERVIOSO</span>
         </h1>
-        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">MODO AVENTURA INTERACTIVA</p>
+        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">AVENTURA VISUAL - ZONA 1</p>
       </header>
 
       <div class="my-4 flex flex-col items-center justify-center">
         <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950/80 p-2 shadow-[0_0_25px_#00f6ff]">
           <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Sistema Nervioso" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
         </div>
-        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ ¡Explora tocando la anatomía! ⚡</span>
+        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Preparando inmersión en el SN ⚡</span>
       </div>
 
       <footer class="w-full mb-2">
         <button id="btn-to-view2" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          COMENZAR AVENTURA <i class="fa-solid fa-play ml-2"></i>
+          INICIAR VIAJE <i class="fa-solid fa-play ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA 2: INSTRUCCIONES ================= -->
-    <section id="view-2" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
+    <!-- ================= VISTA 2: SECUENCIA DE ZOOM / VIAJE INICIAL ================= -->
+    <section id="view-zoom" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
-        <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider">MECÁNICA DEL JUEGO</h2>
+        <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">FASE 1: ENTRADA AL SISTEMA NERVIOSO</h2>
       </header>
 
-      <div class="my-auto w-full p-4 sm:p-5 bg-purple-950/90 border-2 border-cyan-400 rounded-lg shadow-[0_0_15px_#00f6ff] text-left">
-        <div class="flex items-center gap-2 mb-3 border-b-2 border-pink-500 pb-2">
-          <i class="fa-solid fa-gamepad text-pink-400 text-xl"></i>
-          <span class="text-xs sm:text-sm text-cyan-300 uppercase">INSTRUCCIONES TÁCTILES</span>
-        </div>
-        
-        <p class="text-xs sm:text-sm leading-relaxed text-gray-100 font-vt323 text-xl sm:text-2xl my-2">
-          "Eres un impulso eléctrico. En cada fase verás una <b>imagen anatómica real</b>. Toca las diferentes zonas clave de la imagen para descubrir sus funciones sin textos aburridos y, cuando estés listo, supera el minireto eléctrico para avanzar."
-        </p>
-
-        <div class="mt-3 pt-2 border-t border-purple-800 text-[10px] sm:text-xs text-pink-300 space-y-1">
-          <p>🎮 <b>Dinámica por Fase:</b></p>
-          <p>1. Explora los puntos interactivos sobre la foto.</p>
-          <p>2. Responde la pregunta flash para activar la sinapsis.</p>
-          <p>3. Desbloquea la siguiente zona del cuerpo humano.</p>
+      <div class="my-auto w-full flex flex-col items-center">
+        <div class="w-full h-52 sm:h-64 rounded-lg border-2 border-cyan-400 overflow-hidden relative bg-black shadow-[0_0_20px_#00f6ff]">
+          <img id="zoom-img" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80" alt="Zoom Inmersivo" class="w-full h-full object-cover transition-all duration-500">
+          <div class="absolute bottom-0 inset-x-0 bg-black/80 p-2">
+            <p id="zoom-caption" class="text-xs sm:text-sm text-cyan-300 font-vt323 text-2xl">
+              1. Acercamiento general hacia el sistema nervioso central...
+            </p>
+          </div>
         </div>
       </div>
 
       <footer class="w-full mb-2">
-        <button id="btn-start-game" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          SALTAR AL SISTEMA NERVIOSO <i class="fa-solid fa-bolt ml-2"></i>
+        <button id="btn-next-zoom" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+          AVANZAR CÁMARA <i class="fa-solid fa-search-plus ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA 3: FASE INTERACTIVA (IMAGEN + PUNTOS CALIENTES + RETO) ================= -->
-    <section id="view-3" class="hidden h-full flex flex-col justify-between items-center relative">
+    <!-- ================= VISTA 3: EXPLORACIÓN TÁCTIL DE LA NEURONA ================= -->
+    <section id="view-explore" class="hidden h-full flex flex-col justify-between items-center relative">
       
       <!-- Marcador Superior -->
       <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
           <span class="text-pink-400">ZONA:</span>
-          <span id="phase-indicator" class="text-yellow-300">1 / 5</span>
+          <span class="text-yellow-300">1 / 5 (Microestructura)</span>
         </div>
         <div>
           <span class="text-cyan-400">ESTADO:</span>
-          <span id="mode-indicator" class="text-green-400">EXPLORACIÓN TÁCTIL</span>
+          <span class="text-green-400">EXPLORACIÓN CELULAR</span>
         </div>
       </div>
 
-      <!-- Contenedor del Juego Visual -->
-      <div id="game-box" class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between overflow-y-auto">
-        <!-- Se inyecta dinámicamente vía JS -->
-      </div>
-
-    </section>
-
-    <!-- ================= VISTA 4: VICTORIA (FUEGOS ARTIFICIALES) ================= -->
-    <section id="view-win" class="hidden h-full flex flex-col justify-between items-center text-center relative overflow-hidden py-2">
-      <canvas id="fireworksCanvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
-
-      <div class="relative z-10 flex flex-col justify-between h-full w-full items-center">
-        <header class="mt-2">
-          <h2 class="text-lg sm:text-2xl neon-yellow tracking-wider animate-bounce">
-            ¡MISIÓN NEURONAL COMPLETADA!
-          </h2>
-        </header>
-
-        <div class="my-auto p-4 sm:p-6 bg-purple-950/90 border-4 border-pink-500 rounded-lg shadow-[0_0_30px_#ff007f] max-w-md w-full">
-          <div class="text-6xl sm:text-7xl mb-3 flex justify-center gap-3">
-            <span>⚡</span>
-            <span>🧠</span>
+      <!-- Contenedor Visual de la Neurona -->
+      <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between overflow-y-auto">
+        <div>
+          <span class="text-xs neon-cyan block mb-1">CÁMARA DETENIDA EN LA NEURONA</span>
+          <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">Toca los botones sobre la imagen para estudiar sus componentes básicos:</p>
+        </div>
+        
+        <!-- Imagen Real Neurona con Hotspots interactivos -->
+        <div class="relative w-full h-44 sm:h-52 rounded border-2 border-cyan-400 overflow-hidden bg-black my-2">
+          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80" alt="Neurona" class="w-full h-full object-cover opacity-85">
+          <div class="absolute inset-0 p-3 flex flex-wrap gap-2 items-end justify-between">
+            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Soma y Núcleo:</b> Cuerpo celular que integra la información y controla la actividad de la neurona.">
+              📍 Soma / Núcleo
+            </button>
+            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Dendritas:</b> Prolongaciones ramificadas que reciben y conducen el impulso eléctrico hacia el cuerpo celular[cite: 5].">
+              📍 Dendritas
+            </button>
+            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Axón y Mielina:</b> El axón conduce el impulso lejos del soma[cite: 5]. La mielina actúa como capa aislante que permite una mayor velocidad en la transmisión.">
+              📍 Axón y Mielina
+            </button>
           </div>
-          <h3 class="text-sm sm:text-base text-cyan-300 mb-2 uppercase tracking-wide">
-            ¡EXCELENTE TRABAJO!
-          </h3>
-          <p class="text-xs sm:text-sm text-yellow-300 font-vt323 text-2xl sm:text-3xl leading-relaxed my-2">
-            "Has recorrido todas las estructuras del sistema nervioso con éxito."
-          </p>
         </div>
 
-        <footer class="w-full mb-2 z-10">
-          <button id="btn-restart" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-            JUGAR DE NUEVO <i class="fa-solid fa-rotate-right ml-2"></i>
+        <!-- Cuadro de Explicación Dinámica -->
+        <div id="hotspot-info" class="bg-purple-900/90 border border-yellow-400 p-2 rounded text-[10px] sm:text-xs text-gray-200 font-vt323 text-xl mb-2">
+          👉 Pulsa en los puntos de la neurona (Soma, Dendritas, Axón/Mielina) para ver su definición.
+        </div>
+
+        <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-1">
+          SUPERAR EL RETO DE ESTA ZONA <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ================= VISTA 4: RETO / PREGUNTA FLASH ================= -->
+    <section id="view-quiz" class="hidden h-full flex flex-col justify-between items-center relative">
+      <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
+        <div>
+          <span class="text-pink-400">ZONA:</span>
+          <span class="text-yellow-300">1 / 5</span>
+        </div>
+        <div>
+          <span class="text-cyan-400">ESTADO:</span>
+          <span class="text-pink-400">MINIRETO ELÉCTRICO</span>
+        </div>
+      </div>
+
+      <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-4 text-left flex-grow flex flex-col justify-between">
+        <div>
+          <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH - ZONA 1</span>
+          <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
+            ¿Qué función principal cumple el axón con su recubrimiento de mielina en la neurona?
+          </h3>
+        </div>
+
+        <div id="options-container" class="grid grid-cols-1 gap-2 my-3">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Las dendritas reciben y conducen el impulso hacia el cuerpo celular, no lejos de él.">
+            ⚡ Recibir el impulso y llevarlo exclusivamente hacia el cuerpo celular.
           </button>
-        </footer>
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="true" data-reason="¡Correcto! El axón conduce el impulso nervioso lejos del soma, y la mielina permite una mayor velocidad en su transmisión[cite: 5].">
+            ⚡ Conducir el impulso eléctrico lejos del cuerpo celular, permitiendo mayor velocidad gracias a la mielina.
+          </button>
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Los astrocitos forman parte de la neuroglía de soporte, no del axón neuronal[cite: 10].">
+            ⚡ Nutrir y sostener como una célula de la neuroglía no excitable.
+          </button>
+        </div>
+
+        <button id="btn-back-explore" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2 text-[10px] rounded cursor-pointer">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Volver a revisar la neurona
+        </button>
       </div>
     </section>
 
-    <!-- MODAL DE FEEDBACK DE PREGUNTA -->
+    <!-- ================= VISTA 5: FIN DE ZONA 1 (PREPARADO PARA ZONA 2) ================= -->
+    <section id="view-zonewin" class="hidden h-full flex flex-col justify-between items-center text-center py-4">
+      <header>
+        <h2 class="text-lg sm:text-xl neon-yellow tracking-wider">¡ZONA 1 SUPERADA!</h2>
+      </header>
+
+      <div class="my-auto p-5 bg-purple-950/90 border-4 border-green-400 rounded-lg shadow-[0_0_25px_#00ff66] max-w-md w-full">
+        <div class="text-6xl mb-3">⚡🧠</div>
+        <h3 class="text-sm text-cyan-300 mb-2 uppercase">¡Impulso eléctrico activado!</h3>
+        <p class="text-xs text-yellow-300 font-vt323 text-2xl leading-relaxed">
+          Has superado la microestructura neuronal y comprendido el papel del axón y la mielina[cite: 5]. Siguiente destino: <b>El Encéfalo (Zona 2)</b>.
+        </p>
+      </div>
+
+      <footer class="w-full">
+        <button id="btn-next-zone" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
+          AVANZAR A ZONA 2 <i class="fa-solid fa-forward ml-2"></i>
+        </button>
+      </footer>
+    </section>
+
+    <!-- MODAL DE FEEDBACK -->
     <div id="feedback-modal" class="hidden absolute inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-4 sm:p-6 text-left relative shadow-[0_0_20px_#00f6ff]">
         <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
@@ -241,7 +290,7 @@
           Explicación...
         </p>
         <button id="btn-next-step" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer">
-          SIGUIENTE ZONA <i class="fa-solid fa-forward ml-1"></i>
+          CONTINUAR <i class="fa-solid fa-forward ml-1"></i>
         </button>
       </div>
     </div>
@@ -249,99 +298,6 @@
   </main>
 
   <script>
-    // ================= DATOS INTERACTIVOS (IMÁGENES + PUNTOS CLAVE + RETO) =================
-    const gameData = [
-      {
-        phaseNum: "1 / 5",
-        title: "FASE 1: MICROESTRUCTURA NEURONAL",
-        image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80",
-        caption: "Toca las zonas de la neurona para entender su función",
-        hotspots: [
-          { title: "Dendritas", desc: "Reciben y conducen el impulso eléctrico hacia el cuerpo celular[cite: 9]." },
-          { title: "Axón y Mielina", desc: "Conduce el impulso lejos del soma. La mielina acelera la transmisión[cite: 9]." },
-          { title: "Sinapsis", desc: "Espacio de comunicación química entre neuronas[cite: 14]." }
-        ],
-        question: "¿Qué parte de la neurona conduce el impulso nervioso lejos del soma con ayuda de la mielina?",
-        options: [
-          { text: "Las Dendritas", correct: false, reason: "Las dendritas llevan el impulso hacia el cuerpo celular." },
-          { text: "El Axón", correct: true, reason: "¡Correcto! El axón aleja el impulso del soma." },
-          { text: "La Neuroglía", correct: false, reason: "La neuroglía da soporte, no transmite el impulso principal." }
-        ]
-      },
-      {
-        phaseNum: "2 / 5",
-        title: "FASE 2: EL ENCÉFALO",
-        image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80",
-        caption: "Toca las regiones clave del centro de control",
-        hotspots: [
-          { title: "Corteza Cerebral", desc: "Funciones superiores y lóbulos (frontal, parietal, temporal, occipital)[cite: 31, 32]." },
-          { title: "Diencéfalo", desc: "Incluye el tálamo, hipotálamo y la glándula pineal (melatonina)[cite: 33]." },
-          { title: "Cerebelo", desc: "Coordinación inconsciente del movimiento para que sea suave[cite: 38]." }
-        ],
-        question: "¿Qué estructura del encéfalo coordina de forma inconsciente el movimiento para que sea fluido?",
-        options: [
-          { text: "El Cerebelo", correct: true, reason: "¡Exacto! El cerebelo evita movimientos espásticos o temblorosos[cite: 38]." },
-          { text: "El Lóbulo Frontal", correct: false, reason: "El lóbulo frontal genera la orden voluntaria, pero no coordina la suavidad." },
-          { text: "El Epitálamo", correct: false, reason: "El epitálamo regula los ciclos de sueño con melatonina." }
-        ]
-      },
-      {
-        phaseNum: "3 / 5",
-        title: "FASE 3: MÉDULA Y MENINGES",
-        image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=700&q=80",
-        caption: "Toca las capas protectoras del SNC",
-        hotspots: [
-          { title: "Duramadre", desc: "Capa externa y gruesa en contacto directo con el hueso[cite: 20]." },
-          { title: "Aracnoides", desc: "Capa intermedia con forma de tela de araña[cite: 21]." },
-          { title: "Espacio Subaracnoideo y LCR", desc: "Contiene el Líquido Cefalorraquídeo que amortigua y nutre el SNC[cite: 27, 28]." }
-        ],
-        question: "¿Dónde se localiza principalmente el Líquido Cefalorraquídeo (LCR)?",
-        options: [
-          { text: "Espacio Subaracnoideo", correct: true, reason: "¡Correcto! El LCR fluye por debajo de la aracnoides actuando como amortiguador[cite: 27]." },
-          { text: "Espacio Epidural", correct: false, reason: "El espacio epidural se encuentra por encima de la duramadre[cite: 24]." },
-          { text: "Dentro del cráneo sin meninges", correct: false, reason: "El SNC está rodeado por las tres capas meníngeas[cite: 19]." }
-        ]
-      },
-      {
-        phaseNum: "4 / 5",
-        title: "FASE 4: SISTEMA NERVIOSO PERIFÉRICO",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=700&q=80",
-        caption: "Toca para ver los componentes del SNP",
-        hotspots: [
-          { title: "Nervios Sensitivos", desc: "Llevan la información en sentido ascendente (aferente) hacia el SNC[cite: 43]." },
-          { title: "SNP Voluntario", desc: "Formado por 12 pares craneales y nervios espinales[cite: 46, 49]." },
-          { title: "SN Autónomo (Simpático/Parasimpático)", desc: "Control involuntario de órganos, vísceras y glándulas[cite: 52]." }
-        ],
-        question: "¿Qué división del Sistema Nervioso Autónomo prepara al organismo para situaciones de lucha o huida?",
-        options: [
-          { text: "Sistema Simpático", correct: true, reason: "¡Así es! El simpático acelera el ritmo y prepara para la acción[cite: 52]." },
-          { text: "Sistema Parasimpático", correct: false, reason: "El parasimpático se encarga de la relajación y el descanso[cite: 52]." },
-          { text: "Sistema Somático", correct: false, reason: "El somático controla voluntariamente el músculo esquelético." }
-        ]
-      },
-      {
-        phaseNum: "5 / 5",
-        title: "FASE 5: EXPLORACIÓN NEUROLÓGICA",
-        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&q=80",
-        caption: "Toca para conocer las pruebas diagnósticas",
-        hotspots: [
-          { title: "Tomografía (TC)", desc: "De elección rápida en emergencias, traumatismos y lesiones óseas[cite: 55]." },
-          { title: "Resonancia Magnética (RM)", desc: "Ideal para tejidos blandos, tumores y lesiones isquémicas[cite: 55]." },
-          { title: "Examen Neurológico", desc: "Valoración clínica inicial del estado del paciente." }
-        ],
-        question: "Ante una urgencia por un traumatismo craneoencefálico, ¿qué prueba se prioriza?",
-        options: [
-          { text: "Tomografía Computarizada (TC)", correct: true, reason: "¡Correcto! La TC es rápida y muy útil en urgencias y fracturas óseas[cite: 55]." },
-          { text: "Resonancia Magnética (RM)", correct: false, reason: "La RM es más lenta, reservada para detalles tisulares específicos[cite: 55]." },
-          { text: "Electroencefalograma exclusivo", correct: false, reason: "El EEG mide actividad eléctrica, no traumatismos óseos inmediatos." }
-        ]
-      }
-    ];
-
-    let currentPhase = 0;
-    let mode = 'explore'; // 'explore' o 'quiz'
-    let isCurrentCorrect = false;
-
     // Control de Audio
     const bgMusic = document.getElementById('bg-music');
     const btnAudioToggle = document.getElementById('btn-audio-toggle');
@@ -361,210 +317,110 @@
       }
     });
 
-    // Navegación de vistas
+    // Elementos de Vistas
     const view1 = document.getElementById('view-1');
-    const view2 = document.getElementById('view-2');
-    const view3 = document.getElementById('view-3');
-    const viewWin = document.getElementById('view-win');
+    const viewZoom = document.getElementById('view-zoom');
+    const viewExplore = document.getElementById('view-explore');
+    const viewQuiz = document.getElementById('view-quiz');
+    const viewZoneWin = document.getElementById('view-zonewin');
+
+    // Secuencia de Zoom Inicial
+    let zoomStep = 0;
+    const zoomSteps = [
+      {
+        img: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80",
+        text: "1. Acercamiento general hacia el sistema nervioso central..."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=700&q=80",
+        text: "2. Adentrándonos a través de las vías de conducción y la médula..."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80",
+        text: "3. ¡Llegada a la microestructura: La Neurona!"
+      }
+    ];
 
     document.getElementById('btn-to-view2').addEventListener('click', () => {
       view1.classList.add('hidden');
-      view2.classList.remove('hidden');
+      viewZoom.classList.remove('hidden');
+      updateZoom();
     });
 
-    document.getElementById('btn-start-game').addEventListener('click', () => {
-      view2.classList.add('hidden');
-      view3.classList.remove('hidden');
-      currentPhase = 0;
-      mode = 'explore';
-      renderGame();
-    });
-
-    document.getElementById('btn-restart').addEventListener('click', () => {
-      viewWin.classList.add('hidden');
-      view1.classList.remove('hidden');
-    });
-
-    // Renderizar modo exploración interactiva o preguntas
-    function renderGame() {
-      const data = gameData[currentPhase];
-      document.getElementById('phase-indicator').textContent = data.phaseNum;
-      
-      const box = document.getElementById('game-box');
-      box.innerHTML = '';
-
-      if (mode === 'explore') {
-        document.getElementById('mode-indicator').textContent = "1. EXPLORACIÓN VISUAL";
-        document.getElementById('mode-indicator').className = "text-cyan-300";
-
-        let hotspotsHtml = '';
-        data.hotspots.forEach((hs, idx) => {
-          hotspotsHtml += `
-            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer text-left hs-btn" data-index="${idx}">
-              📍 ${hs.title}
-            </button>
-          `;
-        });
-
-        box.innerHTML = `
-          <div>
-            <span class="text-xs neon-cyan block mb-1">${data.title}</span>
-            <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">${data.caption}</p>
-          </div>
-          
-          <!-- Imagen con Botones Hotspots Superpuestos -->
-          <div class="relative w-full h-40 sm:h-52 rounded border-2 border-cyan-400 overflow-hidden bg-black my-2">
-            <img src="${data.image}" alt="Anatomía" class="w-full h-full object-cover opacity-80">
-            <div class="absolute inset-0 p-3 grid grid-cols-3 gap-2 items-end">
-              ${hotspotsHtml}
-            </div>
-          </div>
-
-          <!-- Cuadro de Explicación Dinámica -->
-          <div id="hotspot-info" class="bg-purple-900/90 border border-yellow-400 p-2 rounded text-[10px] sm:text-xs text-gray-200 font-vt323 text-xl mb-2">
-            👉 Haz clic en los botones superiores sobre la imagen para inspeccionar cada parte.
-          </div>
-
-          <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-1">
-            SUPERAR EL RETO DE ESTA ZONA <i class="fa-solid fa-arrow-right ml-1"></i>
-          </button>
-        `;
-
-        // Eventos para los hotspots
-        document.querySelectorAll('.hs-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            const idx = e.currentTarget.getAttribute('data-index');
-            const hs = data.hotspots[idx];
-            document.getElementById('hotspot-info').innerHTML = `<b>📌 ${hs.title}:</b> ${hs.desc}`;
-          });
-        });
-
-        document.getElementById('btn-goto-quiz').addEventListener('click', () => {
-          mode = 'quiz';
-          renderGame();
-        });
-
+    document.getElementById('btn-next-zoom').addEventListener('click', () => {
+      zoomStep++;
+      if (zoomStep < zoomSteps.length) {
+        updateZoom();
       } else {
-        document.getElementById('mode-indicator').textContent = "2. MINIRETO ELÉCTRICO";
-        document.getElementById('mode-indicator').className = "text-pink-400";
-
-        let optionsHtml = '';
-        data.options.forEach((opt, idx) => {
-          optionsHtml += `
-            <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer flex items-center gap-2 option-btn" data-index="${idx}">
-              <span class="text-pink-400">⚡</span> ${opt.text}
-            </button>
-          `;
-        });
-
-        box.innerHTML = `
-          <div>
-            <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH</span>
-            <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
-              ${data.question}
-            </h3>
-          </div>
-          <div class="grid grid-cols-1 gap-2 my-3">
-            ${optionsHtml}
-          </div>
-          <button id="btn-back-explore" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2 text-[10px] rounded cursor-pointer">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Volver a explorar la imagen
-          </button>
-        `;
-
-        document.querySelectorAll('.option-btn').forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            const optIndex = e.currentTarget.getAttribute('data-index');
-            handleAnswer(data.options[optIndex]);
-          });
-        });
-
-        document.getElementById('btn-back-explore').addEventListener('click', () => {
-          mode = 'explore';
-          renderGame();
-        });
+        viewZoom.classList.add('hidden');
+        viewExplore.classList.remove('hidden');
       }
+    });
+
+    function updateZoom() {
+      const current = zoomSteps[zoomStep];
+      document.getElementById('zoom-img').src = current.img;
+      document.getElementById('zoom-caption').textContent = current.text;
     }
 
-    // Modal de Feedback
+    // Exploración Táctil Hotspots
+    document.querySelectorAll('.hs-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const info = e.currentTarget.getAttribute('data-info');
+        document.getElementById('hotspot-info').innerHTML = info;
+      });
+    });
+
+    document.getElementById('btn-goto-quiz').addEventListener('click', () => {
+      viewExplore.classList.add('hidden');
+      viewQuiz.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-back-explore').addEventListener('click', () => {
+      viewQuiz.classList.add('hidden');
+      viewExplore.classList.remove('hidden');
+    });
+
+    // Manejo de Respuesta Flash
+    let isAnswerCorrect = false;
     const modal = document.getElementById('feedback-modal');
     const feedbackIcon = document.getElementById('feedback-icon');
     const feedbackStatus = document.getElementById('feedback-status');
     const feedbackText = document.getElementById('feedback-text');
 
-    function handleAnswer(option) {
-      isCurrentCorrect = option.correct;
-      feedbackText.textContent = option.reason;
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const correct = e.currentTarget.getAttribute('data-correct') === 'true';
+        const reason = e.currentTarget.getAttribute('data-reason');
+        isAnswerCorrect = correct;
+        feedbackText.textContent = reason;
 
-      if (option.correct) {
-        feedbackIcon.textContent = "✅";
-        feedbackStatus.textContent = "¡IMPULSO ACTIVADO!";
-        feedbackStatus.className = "text-sm sm:text-base text-green-400 font-bold";
-      } else {
-        feedbackIcon.textContent = "⚠️";
-        feedbackStatus.textContent = "¡CORRIENTE CORTADA!";
-        feedbackStatus.className = "text-sm sm:text-base text-red-400 font-bold";
-      }
-
-      modal.classList.remove('hidden');
-    }
+        if (correct) {
+          feedbackIcon.textContent = "✅";
+          feedbackStatus.textContent = "¡IMPULSO ACTIVADO!";
+          feedbackStatus.className = "text-sm sm:text-base text-green-400 font-bold";
+        } else {
+          feedbackIcon.textContent = "⚠️";
+          feedbackStatus.textContent = "¡CORRIENTE CORTADA!";
+          feedbackStatus.className = "text-sm sm:text-base text-red-400 font-bold";
+        }
+        modal.classList.remove('hidden');
+      });
+    });
 
     document.getElementById('btn-next-step').addEventListener('click', () => {
       modal.classList.add('hidden');
-      if (isCurrentCorrect) {
-        currentPhase++;
-        if (currentPhase < gameData.length) {
-          mode = 'explore';
-          renderGame();
-        } else {
-          view3.classList.add('hidden');
-          viewWin.classList.remove('hidden');
-          initFireworks();
-        }
+      if (isAnswerCorrect) {
+        viewQuiz.classList.add('hidden');
+        viewZoneWin.classList.remove('hidden');
       }
     });
 
-    // Fuegos Artificiales de Victoria
-    function initFireworks() {
-      const fwCanvas = document.getElementById('fireworksCanvas');
-      const fwCtx = fwCanvas.getContext('2d');
-      fwCanvas.width = fwCanvas.clientWidth;
-      fwCanvas.height = fwCanvas.clientHeight;
-
-      let particles = [];
-      function createFirework(x, y) {
-        const colors = ['#ff007f', '#00f6ff', '#ffe600', '#00ff66'];
-        for (let i = 0; i < 30; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = Math.random() * 4 + 2;
-          particles.push({
-            x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-            alpha: 1, color: colors[Math.floor(Math.random() * colors.length)]
-          });
-        }
-      }
-
-      setInterval(() => {
-        if (!viewWin.classList.contains('hidden')) {
-          createFirework(Math.random() * fwCanvas.width, Math.random() * (fwCanvas.height / 2));
-        }
-      }, 600);
-
-      function animate() {
-        fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
-        particles.forEach((p, idx) => {
-          p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.alpha -= 0.015;
-          if (p.alpha <= 0) { particles.splice(idx, 1); return; }
-          fwCtx.save(); fwCtx.globalAlpha = p.alpha; fwCtx.fillStyle = p.color;
-          fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3, 0, Math.PI * 2); fwCtx.fill();
-          fwCtx.restore();
-        });
-        if (!viewWin.classList.contains('hidden')) requestAnimationFrame(animate);
-      }
-      animate();
-    }
+    document.getElementById('btn-next-zone').addEventListener('click', () => {
+      alert("¡Excelente! En cuanto definamos los cambios para la Zona 2, la integraremos aquí mismo.");
+    });
   </script>
 </body>
 </html>
