@@ -78,13 +78,13 @@
     }
 
     .btn-hotspot {
-      background: rgba(0, 246, 255, 0.2);
+      background: rgba(0, 246, 255, 0.25);
       border: 2px dashed #00f6ff;
       transition: all 0.2s ease;
     }
 
     .btn-hotspot:hover, .btn-hotspot.active {
-      background: rgba(255, 0, 127, 0.5);
+      background: rgba(255, 0, 127, 0.6);
       border-color: #ffe600;
       box-shadow: 0 0 15px #ffe600;
     }
@@ -126,14 +126,14 @@
         <h1 class="text-xl sm:text-3xl neon-pink tracking-wider leading-relaxed">
           EL VIAJE DEL<br><span class="neon-cyan text-2xl sm:text-4xl">IMPULSO NERVIOSO</span>
         </h1>
-        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">AVENTURA VISUAL - ZONA 1</p>
+        <p class="text-[10px] sm:text-xs text-yellow-300 mt-2 tracking-widest">ZONA 1: MICROESTRUCTURA NEURONAL</p>
       </header>
 
       <div class="my-4 flex flex-col items-center justify-center">
         <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950/80 p-2 shadow-[0_0_25px_#00f6ff]">
-          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=500&q=80" alt="Sistema Nervioso" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Neuron_Hand-drawn.gif" alt="Impulso Neuronal" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
         </div>
-        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Preparando inmersión en el SN ⚡</span>
+        <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Inmersión en la Neurona ⚡</span>
       </div>
 
       <footer class="w-full mb-2">
@@ -143,81 +143,86 @@
       </footer>
     </section>
 
-    <!-- ================= VISTA 2: SECUENCIA DE ZOOM / VIAJE INICIAL ================= -->
+    <!-- ================= VISTA 2: VÍDEO EDUCATIVO RECORTADO (0:07 a 2:45) ================= -->
     <section id="view-zoom" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
-        <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">FASE 1: ENTRADA AL SISTEMA NERVIOSO</h2>
+        <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">FASE 1: VIAJE VISUAL POR LA NEURONA</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <div class="w-full h-52 sm:h-64 rounded-lg border-2 border-cyan-400 overflow-hidden relative bg-black shadow-[0_0_20px_#00f6ff]">
-          <img id="zoom-img" src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80" alt="Zoom Inmersivo" class="w-full h-full object-cover transition-all duration-500">
-          <div class="absolute bottom-0 inset-x-0 bg-black/80 p-2">
-            <p id="zoom-caption" class="text-xs sm:text-sm text-cyan-300 font-vt323 text-2xl">
-              1. Acercamiento general hacia el sistema nervioso central...
-            </p>
-          </div>
+        <div class="w-full h-56 sm:h-64 rounded-lg border-2 border-cyan-400 overflow-hidden relative bg-black shadow-[0_0_20px_#00f6ff]">
+          <!-- Reproductor de YouTube incrustado controlado por tiempo (start=7, end=165) -->
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/9069nvkob6c?start=7&end=165&autoplay=1&rel=0" title="Vídeo Microestructura Neuronal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+        <p class="text-[10px] sm:text-xs text-cyan-300 font-vt323 text-xl mt-2">
+          Observa el vídeo explicativo de la microestructura antes de pasar a la práctica.
+        </p>
       </div>
 
       <footer class="w-full mb-2">
         <button id="btn-next-zoom" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          AVANZAR CÁMARA <i class="fa-solid fa-search-plus ml-2"></i>
+          EXPLORAR LA NEURONA <i class="fa-solid fa-microscope ml-2"></i>
         </button>
       </footer>
     </section>
 
-    <!-- ================= VISTA 3: EXPLORACIÓN TÁCTIL DE LA NEURONA ================= -->
+    <!-- ================= VISTA 3: EXPLORACIÓN CLARA DE LA NEURONA ================= -->
     <section id="view-explore" class="hidden h-full flex flex-col justify-between items-center relative">
       
       <!-- Marcador Superior -->
       <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
           <span class="text-pink-400">ZONA:</span>
-          <span class="text-yellow-300">1 / 5 (Microestructura)</span>
+          <span class="text-yellow-300">1 / 5</span>
         </div>
         <div>
           <span class="text-cyan-400">ESTADO:</span>
-          <span class="text-green-400">EXPLORACIÓN CELULAR</span>
+          <span class="text-green-400">ANATOMÍA DE LA NEURONA</span>
         </div>
       </div>
 
       <!-- Contenedor Visual de la Neurona -->
       <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between overflow-y-auto">
         <div>
-          <span class="text-xs neon-cyan block mb-1">CÁMARA DETENIDA EN LA NEURONA</span>
-          <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">Toca los botones sobre la imagen para estudiar sus componentes básicos:</p>
+          <span class="text-xs neon-cyan block mb-1">ANATOMÍA CELULAR NEURONAL</span>
+          <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">Toca cada etiqueta sobre la neurona para estudiar su función:</p>
         </div>
         
-        <!-- Imagen Real Neurona con Hotspots interactivos -->
-        <div class="relative w-full h-44 sm:h-52 rounded border-2 border-cyan-400 overflow-hidden bg-black my-2">
-          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80" alt="Neurona" class="w-full h-full object-cover opacity-85">
-          <div class="absolute inset-0 p-3 flex flex-wrap gap-2 items-end justify-between">
-            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Soma y Núcleo:</b> Cuerpo celular que integra la información y controla la actividad de la neurona.">
-              📍 Soma / Núcleo
-            </button>
-            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Dendritas:</b> Prolongaciones ramificadas que reciben y conducen el impulso eléctrico hacia el cuerpo celular[cite: 5].">
-              📍 Dendritas
-            </button>
-            <button class="btn-hotspot p-2 rounded text-[10px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Axón y Mielina:</b> El axón conduce el impulso lejos del soma[cite: 5]. La mielina actúa como capa aislante que permite una mayor velocidad en la transmisión.">
-              📍 Axón y Mielina
-            </button>
+        <!-- Esquema Anatómicamente Preciso de la Neurona -->
+        <div class="relative w-full h-48 sm:h-56 rounded border-2 border-cyan-400 overflow-hidden bg-purple-950/90 my-2 flex items-center justify-center p-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Blausen_0657_MultipolarNeuron.png/640px-Blausen_0657_MultipolarNeuron.png" alt="Esquema Neurona" class="w-full h-full object-contain">
+          
+          <!-- Botones Hotspots posicionados -->
+          <div class="absolute inset-0 p-2 flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Dendritas:</b> Salen del cuerpo celular. Reciben y conducen el impulso nervioso hacia el cuerpo celular (soma).">
+                📍 Dendritas
+              </button>
+              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Soma o Cuerpo Celular:</b> Contiene el núcleo y los orgánulos. Integra la información recibida[cite: 5].">
+                📍 Soma / Núcleo
+              </button>
+            </div>
+            <div class="flex justify-center items-end mb-1">
+              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Axón y Mielina:</b> El axón conduce el impulso lejos del soma[cite: 5]. La mielina lo recubre permitiendo mayor velocidad de transmisión[cite: 5].">
+                📍 Axón con Mielina
+              </button>
+            </div>
           </div>
         </div>
 
         <!-- Cuadro de Explicación Dinámica -->
         <div id="hotspot-info" class="bg-purple-900/90 border border-yellow-400 p-2 rounded text-[10px] sm:text-xs text-gray-200 font-vt323 text-xl mb-2">
-          👉 Pulsa en los puntos de la neurona (Soma, Dendritas, Axón/Mielina) para ver su definición.
+          👉 Pulsa en los puntos etiquetados sobre la neurona para repasar sus estructuras básicas[cite: 5].
         </div>
 
         <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-1">
-          SUPERAR EL RETO DE ESTA ZONA <i class="fa-solid fa-arrow-right ml-1"></i>
+          SUPERAR RETO DE LA NEURONA <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </div>
 
     </section>
 
-    <!-- ================= VISTA 4: RETO / PREGUNTA FLASH ================= -->
+    <!-- ================= VISTA 4: PREGUNTA FLASH ================= -->
     <section id="view-quiz" class="hidden h-full flex flex-col justify-between items-center relative">
       <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
@@ -234,29 +239,29 @@
         <div>
           <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH - ZONA 1</span>
           <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
-            ¿Qué función principal cumple el axón con su recubrimiento de mielina en la neurona?
+            ¿Qué prolongación neuronal conduce el impulso nervioso lejos del cuerpo celular y puede estar recubierta de mielina para aumentar la velocidad?
           </h3>
         </div>
 
         <div id="options-container" class="grid grid-cols-1 gap-2 my-3">
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Las dendritas reciben y conducen el impulso hacia el cuerpo celular, no lejos de él.">
-            ⚡ Recibir el impulso y llevarlo exclusivamente hacia el cuerpo celular.
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Las dendritas reciben y conducen el impulso HACIA el cuerpo celular[cite: 5].">
+            ⚡ Las Dendritas.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="true" data-reason="¡Correcto! El axón conduce el impulso nervioso lejos del soma, y la mielina permite una mayor velocidad en su transmisión[cite: 5].">
-            ⚡ Conducir el impulso eléctrico lejos del cuerpo celular, permitiendo mayor velocidad gracias a la mielina.
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="true" data-reason="¡Correcto! El axón conduce el impulso lejos del soma y la mielina incrementa la velocidad de transmisión[cite: 5].">
+            ⚡ El Axón.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Los astrocitos forman parte de la neuroglía de soporte, no del axón neuronal[cite: 10].">
-            ⚡ Nutrir y sostener como una célula de la neuroglía no excitable.
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Los astrocitos son células de soporte (neuroglía), no conducen el potencial de acción principal[cite: 4, 9].">
+            ⚡ Los Astrocitos.
           </button>
         </div>
 
         <button id="btn-back-explore" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2 text-[10px] rounded cursor-pointer">
-          <i class="fa-solid fa-arrow-left mr-1"></i> Volver a revisar la neurona
+          <i class="fa-solid fa-arrow-left mr-1"></i> Volver al esquema de la neurona
         </button>
       </div>
     </section>
 
-    <!-- ================= VISTA 5: FIN DE ZONA 1 (PREPARADO PARA ZONA 2) ================= -->
+    <!-- ================= VISTA 5: FIN ZONA 1 ================= -->
     <section id="view-zonewin" class="hidden h-full flex flex-col justify-between items-center text-center py-4">
       <header>
         <h2 class="text-lg sm:text-xl neon-yellow tracking-wider">¡ZONA 1 SUPERADA!</h2>
@@ -264,15 +269,15 @@
 
       <div class="my-auto p-5 bg-purple-950/90 border-4 border-green-400 rounded-lg shadow-[0_0_25px_#00ff66] max-w-md w-full">
         <div class="text-6xl mb-3">⚡🧠</div>
-        <h3 class="text-sm text-cyan-300 mb-2 uppercase">¡Impulso eléctrico activado!</h3>
+        <h3 class="text-sm text-cyan-300 mb-2 uppercase">¡Sinapsis activada!</h3>
         <p class="text-xs text-yellow-300 font-vt323 text-2xl leading-relaxed">
-          Has superado la microestructura neuronal y comprendido el papel del axón y la mielina[cite: 5]. Siguiente destino: <b>El Encéfalo (Zona 2)</b>.
+          Has dominado la microestructura de la neurona y sus prolongaciones[cite: 5]. Próximo paso: **Zona 2 (El Encéfalo)**.
         </p>
       </div>
 
       <footer class="w-full">
         <button id="btn-next-zone" class="btn-arcade w-full max-w-xs py-4 px-6 rounded-lg text-sm sm:text-base cursor-pointer tracking-wider">
-          AVANZAR A ZONA 2 <i class="fa-solid fa-forward ml-2"></i>
+          CONTINUAR A ZONA 2 <i class="fa-solid fa-forward ml-2"></i>
         </button>
       </footer>
     </section>
@@ -298,7 +303,7 @@
   </main>
 
   <script>
-    // Control de Audio
+    // Control Audio
     const bgMusic = document.getElementById('bg-music');
     const btnAudioToggle = document.getElementById('btn-audio-toggle');
     const audioIcon = document.getElementById('audio-icon');
@@ -324,46 +329,17 @@
     const viewQuiz = document.getElementById('view-quiz');
     const viewZoneWin = document.getElementById('view-zonewin');
 
-    // Secuencia de Zoom Inicial
-    let zoomStep = 0;
-    const zoomSteps = [
-      {
-        img: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=700&q=80",
-        text: "1. Acercamiento general hacia el sistema nervioso central..."
-      },
-      {
-        img: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=700&q=80",
-        text: "2. Adentrándonos a través de las vías de conducción y la médula..."
-      },
-      {
-        img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=700&q=80",
-        text: "3. ¡Llegada a la microestructura: La Neurona!"
-      }
-    ];
-
     document.getElementById('btn-to-view2').addEventListener('click', () => {
       view1.classList.add('hidden');
       viewZoom.classList.remove('hidden');
-      updateZoom();
     });
 
     document.getElementById('btn-next-zoom').addEventListener('click', () => {
-      zoomStep++;
-      if (zoomStep < zoomSteps.length) {
-        updateZoom();
-      } else {
-        viewZoom.classList.add('hidden');
-        viewExplore.classList.remove('hidden');
-      }
+      viewZoom.classList.add('hidden');
+      viewExplore.classList.remove('hidden');
     });
 
-    function updateZoom() {
-      const current = zoomSteps[zoomStep];
-      document.getElementById('zoom-img').src = current.img;
-      document.getElementById('zoom-caption').textContent = current.text;
-    }
-
-    // Exploración Táctil Hotspots
+    // Hotspots
     document.querySelectorAll('.hs-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
@@ -383,7 +359,7 @@
       viewExplore.classList.remove('hidden');
     });
 
-    // Manejo de Respuesta Flash
+    // Feedback
     let isAnswerCorrect = false;
     const modal = document.getElementById('feedback-modal');
     const feedbackIcon = document.getElementById('feedback-icon');
@@ -419,7 +395,7 @@
     });
 
     document.getElementById('btn-next-zone').addEventListener('click', () => {
-      alert("¡Excelente! En cuanto definamos los cambios para la Zona 2, la integraremos aquí mismo.");
+      alert("¡Zona 1 lista! Cuando quieras, pasamos a estructurar la Zona 2 (El Encéfalo).");
     });
   </script>
 </body>
