@@ -78,14 +78,16 @@
     }
 
     .btn-hotspot {
-      background: rgba(0, 246, 255, 0.25);
-      border: 2px dashed #00f6ff;
+      background: rgba(11, 2, 26, 0.9);
+      border: 2px solid #00f6ff;
+      box-shadow: 0 0 10px #00f6ff;
       transition: all 0.2s ease;
     }
 
-    .btn-hotspot:hover, .btn-hotspot.active {
-      background: rgba(255, 0, 127, 0.6);
+    .btn-hotspot:hover, .btn-hotspot:active {
+      background: #ff007f;
       border-color: #ffe600;
+      color: #ffffff;
       box-shadow: 0 0 15px #ffe600;
     }
 
@@ -114,8 +116,8 @@
     <i id="audio-icon" class="fa-solid fa-volume-xmark"></i>
   </button>
 
-  <!-- Capa Scanlines -->
-  <div class="fixed inset-0 scanlines"></div>
+  <!-- Capa Scanlines (Filtro Retro) -->
+  <div id="scanlines-layer" class="fixed inset-0 scanlines"></div>
 
   <!-- Contenedor Arcade Principal -->
   <main class="crt-container w-full max-w-2xl min-h-[640px] h-full max-h-[880px] flex flex-col justify-between p-4 sm:p-6 relative overflow-y-auto z-10">
@@ -130,8 +132,13 @@
       </header>
 
       <div class="my-4 flex flex-col items-center justify-center">
-        <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950/80 p-2 shadow-[0_0_25px_#00f6ff]">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Neuron_Hand-drawn.gif" alt="Impulso Neuronal" class="w-full h-full object-cover rounded-full opacity-90 border-2 border-pink-500">
+        <div class="w-44 h-44 sm:w-56 sm:h-56 border-4 border-cyan-400 rounded-full overflow-hidden bg-purple-950 p-2 shadow-[0_0_25px_#00f6ff] flex items-center justify-center">
+          <!-- Imagen 1 Corregida: Esquema Neuronal Claro -->
+          <svg class="w-full h-full text-cyan-400 p-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a4 4 0 00-4 4c0 1.95 1.4 3.58 3.25 3.93L9 15l-3 1-2 4 4-2 1-3 5.07-2.25A4 4 0 0012 2z" />
+            <circle cx="12" cy="6" r="1.5" fill="#ff007f" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v12m0 0l-3-3m3 3l3-3" />
+          </svg>
         </div>
         <span class="text-xs text-pink-400 mt-3 font-vt323 text-2xl tracking-wider">⚡ Inmersión en la Neurona ⚡</span>
       </div>
@@ -143,19 +150,19 @@
       </footer>
     </section>
 
-    <!-- ================= VISTA 2: VÍDEO EDUCATIVO RECORTADO (0:07 a 2:45) ================= -->
+    <!-- ================= VISTA 2: VÍDEO EDUCATIVO (Limpio de 0:07 a 2:30) ================= -->
     <section id="view-zoom" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-sm sm:text-lg neon-yellow tracking-wider">FASE 1: VIAJE VISUAL POR LA NEURONA</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <div class="w-full h-56 sm:h-64 rounded-lg border-2 border-cyan-400 overflow-hidden relative bg-black shadow-[0_0_20px_#00f6ff]">
-          <!-- Reproductor de YouTube incrustado controlado por tiempo (start=7, end=165) -->
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/9069nvkob6c?start=7&end=165&autoplay=1&rel=0" title="Vídeo Microestructura Neuronal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- Contenedor del Vídeo sin interferencias (0:07 a 2:30) -->
+        <div class="w-full h-60 sm:h-72 rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff]">
+          <iframe id="yt-player" class="w-full h-full" src="https://www.youtube.com/embed/9069nvkob6c?start=7&end=150&rel=0" title="Vídeo Microestructura Neuronal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <p class="text-[10px] sm:text-xs text-cyan-300 font-vt323 text-xl mt-2">
-          Observa el vídeo explicativo de la microestructura antes de pasar a la práctica.
+          Observa el vídeo explicativo antes de pasar a la exploración táctil.
         </p>
       </div>
 
@@ -170,7 +177,7 @@
     <section id="view-explore" class="hidden h-full flex flex-col justify-between items-center relative">
       
       <!-- Marcador Superior -->
-      <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
+      <div class="w-full flex justify-between items-center bg-purple-950 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
           <span class="text-pink-400">ZONA:</span>
           <span class="text-yellow-300">1 / 5</span>
@@ -182,40 +189,51 @@
       </div>
 
       <!-- Contenedor Visual de la Neurona -->
-      <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between overflow-y-auto">
+      <div class="w-full bg-purple-950/90 border-2 border-pink-500 rounded-lg p-3 text-left flex-grow flex flex-col justify-between">
         <div>
           <span class="text-xs neon-cyan block mb-1">ANATOMÍA CELULAR NEURONAL</span>
-          <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">Toca cada etiqueta sobre la neurona para estudiar su función:</p>
+          <p class="text-[10px] sm:text-xs text-gray-300 mb-2 font-vt323 text-xl">Toca cada componente para abrir su ficha explicativa:</p>
         </div>
         
-        <!-- Esquema Anatómicamente Preciso de la Neurona -->
-        <div class="relative w-full h-48 sm:h-56 rounded border-2 border-cyan-400 overflow-hidden bg-purple-950/90 my-2 flex items-center justify-center p-2">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Blausen_0657_MultipolarNeuron.png/640px-Blausen_0657_MultipolarNeuron.png" alt="Esquema Neurona" class="w-full h-full object-contain">
+        <!-- Esquema Anatómico Interactivo SVG Nítido -->
+        <div class="relative w-full h-52 sm:h-64 rounded-lg border-2 border-cyan-400 bg-purple-950 p-2 my-2 flex items-center justify-center overflow-hidden">
           
-          <!-- Botones Hotspots posicionados -->
-          <div class="absolute inset-0 p-2 flex flex-col justify-between">
-            <div class="flex justify-between items-start">
-              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Dendritas:</b> Salen del cuerpo celular. Reciben y conducen el impulso nervioso hacia el cuerpo celular (soma).">
+          <!-- Dibujo vectorial nítido de una neurona multipolar -->
+          <svg class="w-full h-full text-cyan-300 opacity-90" viewBox="0 0 500 200">
+            <!-- Dendritas -->
+            <path d="M 40 50 L 100 100 M 30 120 L 100 100 M 50 160 L 100 100" stroke="#ff007f" stroke-width="4" stroke-linecap="round"/>
+            <!-- Soma/Cuerpo -->
+            <polygon points="100,70 140,100 100,130 70,100" fill="#330066" stroke="#00f6ff" stroke-width="4"/>
+            <circle cx="100" cy="100" r="14" fill="#ffe600"/>
+            <!-- Axón con Vainas de Mielina -->
+            <path d="M 140 100 L 420 100" stroke="#00f6ff" stroke-width="4"/>
+            <rect x="160" y="85" width="40" height="30" rx="5" fill="#ff007f" stroke="#ffe600" stroke-width="2"/>
+            <rect x="220" y="85" width="40" height="30" rx="5" fill="#ff007f" stroke="#ffe600" stroke-width="2"/>
+            <rect x="280" y="85" width="40" height="30" rx="5" fill="#ff007f" stroke="#ffe600" stroke-width="2"/>
+            <rect x="340" y="85" width="40" height="30" rx="5" fill="#ff007f" stroke="#ffe600" stroke-width="2"/>
+            <!-- Terminales Axónicas -->
+            <path d="M 420 100 L 460 70 M 420 100 L 470 100 M 420 100 L 460 130" stroke="#00f6ff" stroke-width="3"/>
+          </svg>
+
+          <!-- Botones interactivos súper accesibles -->
+          <div class="absolute inset-0 p-3 flex flex-col justify-between pointer-events-none">
+            <div class="flex justify-between items-start pointer-events-auto">
+              <button class="btn-hotspot px-3 py-2 rounded text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-title="DENDRITAS" data-desc="Salen del cuerpo celular (soma). Su función principal es recibir y conducir el impulso nervioso directamente hacia el cuerpo celular[cite: 5].">
                 📍 Dendritas
               </button>
-              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Soma o Cuerpo Celular:</b> Contiene el núcleo y los orgánulos. Integra la información recibida[cite: 5].">
+              <button class="btn-hotspot px-3 py-2 rounded text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-title="SOMA / NÚCLEO" data-desc="Es el cuerpo celular de la neurona. Contiene el núcleo y los orgánulos, encargándose de integrar toda la información recibida[cite: 5].">
                 📍 Soma / Núcleo
               </button>
             </div>
-            <div class="flex justify-center items-end mb-1">
-              <button class="btn-hotspot px-2 py-1 rounded text-[9px] sm:text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-info="<b>Axón y Mielina:</b> El axón conduce el impulso lejos del soma[cite: 5]. La mielina lo recubre permitiendo mayor velocidad de transmisión[cite: 5].">
+            <div class="flex justify-center items-end pointer-events-auto mb-1">
+              <button class="btn-hotspot px-3 py-2 rounded text-xs text-yellow-300 font-bold cursor-pointer hs-btn" data-title="AXÓN CON MIELINA" data-desc="El axón conduce el impulso nervioso lejos del cuerpo celular[cite: 5]. Muchos axones están recubiertos de bandas de mielina, lo que permite una velocidad de transmisión mucho mayor[cite: 5].">
                 📍 Axón con Mielina
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Cuadro de Explicación Dinámica -->
-        <div id="hotspot-info" class="bg-purple-900/90 border border-yellow-400 p-2 rounded text-[10px] sm:text-xs text-gray-200 font-vt323 text-xl mb-2">
-          👉 Pulsa en los puntos etiquetados sobre la neurona para repasar sus estructuras básicas[cite: 5].
-        </div>
-
-        <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-1">
+        <button id="btn-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-2">
           SUPERAR RETO DE LA NEURONA <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </div>
@@ -224,7 +242,7 @@
 
     <!-- ================= VISTA 4: PREGUNTA FLASH ================= -->
     <section id="view-quiz" class="hidden h-full flex flex-col justify-between items-center relative">
-      <div class="w-full flex justify-between items-center bg-purple-950/90 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
+      <div class="w-full flex justify-between items-center bg-purple-950 px-3 py-2 border-2 border-cyan-400 rounded-md text-[10px] sm:text-xs mb-2">
         <div>
           <span class="text-pink-400">ZONA:</span>
           <span class="text-yellow-300">1 / 5</span>
@@ -235,11 +253,11 @@
         </div>
       </div>
 
-      <div class="w-full bg-purple-950/80 border-2 border-pink-500 rounded-lg p-4 text-left flex-grow flex flex-col justify-between">
+      <div class="w-full bg-purple-950/90 border-2 border-pink-500 rounded-lg p-4 text-left flex-grow flex flex-col justify-between">
         <div>
           <span class="text-xs sm:text-sm neon-pink block mb-1">PREGUNTA FLASH - ZONA 1</span>
           <h3 class="text-xs sm:text-sm text-yellow-300 leading-snug my-2">
-            ¿Qué prolongación neuronal conduce el impulso nervioso lejos del cuerpo celular y puede estar recubierta de mielina para aumentar la velocidad?
+            ¿Qué prolongación neuronal conduce el impulso nervioso lejos del cuerpo celular y puede estar recubierta de mielina para aumentar la velocidad?[cite: 5]
           </h3>
         </div>
 
@@ -250,7 +268,7 @@
           <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="true" data-reason="¡Correcto! El axón conduce el impulso lejos del soma y la mielina incrementa la velocidad de transmisión[cite: 5].">
             ⚡ El Axón.
           </button>
-          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Los astrocitos son células de soporte (neuroglía), no conducen el potencial de acción principal[cite: 4, 9].">
+          <button class="btn-option w-full p-3 text-left rounded text-xs sm:text-sm text-gray-100 font-vt323 text-xl sm:text-2xl cursor-pointer option-btn" data-correct="false" data-reason="Los astrocitos son células de soporte de la neuroglía, no conducen el potencial de acción[cite: 4, 9].">
             ⚡ Los Astrocitos.
           </button>
         </div>
@@ -267,7 +285,7 @@
         <h2 class="text-lg sm:text-xl neon-yellow tracking-wider">¡ZONA 1 SUPERADA!</h2>
       </header>
 
-      <div class="my-auto p-5 bg-purple-950/90 border-4 border-green-400 rounded-lg shadow-[0_0_25px_#00ff66] max-w-md w-full">
+      <div class="my-auto p-5 bg-purple-950 border-4 border-green-400 rounded-lg shadow-[0_0_25px_#00ff66] max-w-md w-full">
         <div class="text-6xl mb-3">⚡🧠</div>
         <h3 class="text-sm text-cyan-300 mb-2 uppercase">¡Sinapsis activada!</h3>
         <p class="text-xs text-yellow-300 font-vt323 text-2xl leading-relaxed">
@@ -282,14 +300,28 @@
       </footer>
     </section>
 
-    <!-- MODAL DE FEEDBACK -->
-    <div id="feedback-modal" class="hidden absolute inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-4 sm:p-6 text-left relative shadow-[0_0_20px_#00f6ff]">
+    <!-- CUADRO DE DIÁLOGO EMERGENTE PARA EXPLICACIÓN DE PARTES (PUNTO 3) -->
+    <div id="info-modal" class="hidden absolute inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-5 text-left relative shadow-[0_0_30px_#00f6ff]">
+        <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
+          <span class="text-3xl">🔬</span>
+          <h3 id="info-modal-title" class="text-base sm:text-lg text-yellow-300 font-bold">TÍTULO ESTRUCTURA</h3>
+        </div>
+        <p id="info-modal-desc" class="text-sm sm:text-base text-gray-100 leading-relaxed font-vt323 text-2xl sm:text-3xl mb-5">
+          Descripción detallada...
+        </p>
+        <button id="btn-close-info" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer">
+          ENTENDIDO <i class="fa-solid fa-check ml-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MODAL DE FEEDBACK PREGUNTA -->
+    <div id="feedback-modal" class="hidden absolute inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+      <div class="w-full max-w-md bg-purple-950 border-4 border-cyan-400 rounded-lg p-5 text-left relative shadow-[0_0_30px_#00f6ff]">
         <div class="flex items-center gap-3 mb-3 pb-2 border-b-2 border-pink-500">
           <span id="feedback-icon" class="text-4xl">💡</span>
-          <div>
-            <h3 id="feedback-status" class="text-sm sm:text-base text-yellow-300">¡RESULTADO!</h3>
-          </div>
+          <h3 id="feedback-status" class="text-sm sm:text-base text-yellow-300">¡RESULTADO!</h3>
         </div>
         <p id="feedback-text" class="text-xs sm:text-sm text-gray-100 leading-relaxed font-vt323 text-2xl mb-4">
           Explicación...
@@ -328,25 +360,38 @@
     const viewExplore = document.getElementById('view-explore');
     const viewQuiz = document.getElementById('view-quiz');
     const viewZoneWin = document.getElementById('view-zonewin');
+    const scanlinesLayer = document.getElementById('scanlines-layer');
 
     document.getElementById('btn-to-view2').addEventListener('click', () => {
       view1.classList.add('hidden');
       viewZoom.classList.remove('hidden');
+      // Ocultar scanlines en la vista del vídeo para máxima nitidez (Punto 2)
+      scanlinesLayer.classList.add('hidden');
     });
 
     document.getElementById('btn-next-zoom').addEventListener('click', () => {
       viewZoom.classList.add('hidden');
       viewExplore.classList.remove('hidden');
+      scanlinesLayer.classList.remove('hidden');
     });
 
-    // Hotspots
+    // Cuadro de Diálogo Emergente para las partes (Punto 3)
+    const infoModal = document.getElementById('info-modal');
+    const infoTitle = document.getElementById('info-modal-title');
+    const infoDesc = document.getElementById('info-modal-desc');
+
     document.querySelectorAll('.hs-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.hs-btn').forEach(b => b.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        const info = e.currentTarget.getAttribute('data-info');
-        document.getElementById('hotspot-info').innerHTML = info;
+        const title = e.currentTarget.getAttribute('data-title');
+        const desc = e.currentTarget.getAttribute('data-desc');
+        infoTitle.textContent = title;
+        infoDesc.innerHTML = desc;
+        infoModal.classList.remove('hidden');
       });
+    });
+
+    document.getElementById('btn-close-info').addEventListener('click', () => {
+      infoModal.classList.add('hidden');
     });
 
     document.getElementById('btn-goto-quiz').addEventListener('click', () => {
@@ -359,7 +404,7 @@
       viewExplore.classList.remove('hidden');
     });
 
-    // Feedback
+    // Feedback Pregunta Flash
     let isAnswerCorrect = false;
     const modal = document.getElementById('feedback-modal');
     const feedbackIcon = document.getElementById('feedback-icon');
@@ -395,7 +440,7 @@
     });
 
     document.getElementById('btn-next-zone').addEventListener('click', () => {
-      alert("¡Zona 1 lista! Cuando quieras, pasamos a estructurar la Zona 2 (El Encéfalo).");
+      alert("¡Zona 1 perfeccionada! Cuando desees avanzaremos con el diseño de la Zona 2 (El Encéfalo).");
     });
   </script>
 </body>
