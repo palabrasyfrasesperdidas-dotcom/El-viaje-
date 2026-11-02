@@ -92,6 +92,25 @@
       background: #380070;
       box-shadow: 0 0 12px #ffe600;
     }
+
+    /* Contenedor Responsivo Adaptado para Shorts Verticales en Móvil y Web */
+    .short-video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 210px;
+      height: 0;
+      padding-bottom: 373.33%; /* Proporción vertical 9:16 exacta */
+      margin: 0 auto;
+    }
+
+    .short-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body class="min-h-screen w-screen flex flex-col items-center justify-center p-2 sm:p-4">
@@ -136,18 +155,17 @@
       </footer>
     </section>
 
-    <!-- ================= VISTA INTRODUCCIÓN GENERAL (Short Vertical) ================= -->
+    <!-- ================= VISTA INTRODUCCIÓN GENERAL (Short Vertical Responsivo) ================= -->
     <section id="view-intro-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-base sm:text-xl neon-yellow font-arcade tracking-wider">INTRODUCCIÓN: SISTEMA NERVIOSO</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <!-- Contenedor Short Vertical -->
-        <div class="w-full max-w-[240px] aspect-[9/16] rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff] my-1">
-          <iframe id="iframe-intro" class="w-full h-full" src="" title="Short Introducción" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="short-video-wrapper border-4 border-cyan-400 rounded-lg shadow-[0_0_25px_#00f6ff] bg-black my-1">
+          <iframe id="iframe-intro" src="" title="Short Introducción" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p class="text-xs text-cyan-300 mt-1 font-medium">Short introductorio (formato vertical).</p>
+        <p class="text-xs text-cyan-300 mt-2 font-medium">Short introductorio (formato vertical adaptado).</p>
       </div>
 
       <footer class="w-full mb-2">
@@ -157,17 +175,17 @@
       </footer>
     </section>
 
-    <!-- ================= VISTA ZONA 1: VÍDEO NEURONA (Short Vertical) ================= -->
+    <!-- ================= VISTA ZONA 1: VÍDEO NEURONA ================= -->
     <section id="view-z1-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-base sm:text-xl neon-yellow font-arcade tracking-wider">ZONA 1: MICROESTRUCTURA NEURONAL</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <div class="w-full max-w-[240px] aspect-[9/16] rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff] my-1">
-          <iframe id="iframe-z1" class="w-full h-full" src="" title="Short Neurona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="short-video-wrapper border-4 border-cyan-400 rounded-lg shadow-[0_0_25px_#00f6ff] bg-black my-1">
+          <iframe id="iframe-z1" src="" title="Short Neurona" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p class="text-xs text-cyan-300 mt-1 font-medium">Short sobre la microestructura de la neurona.</p>
+        <p class="text-xs text-cyan-300 mt-2 font-medium">Short sobre la microestructura de la neurona.</p>
       </div>
 
       <footer class="w-full mb-2">
@@ -249,17 +267,17 @@
       </div>
     </section>
 
-    <!-- ================= VISTA ZONA 2: VÍDEO ENCÉFALO (Short Vertical) ================= -->
+    <!-- ================= VISTA ZONA 2: VÍDEO ENCÉFALO ================= -->
     <section id="view-z2-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-base sm:text-xl neon-yellow font-arcade tracking-wider">ZONA 2: EL ENCÉFALO (SNC)</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <div class="w-full max-w-[240px] aspect-[9/16] rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff] my-1">
-          <iframe id="iframe-z2" class="w-full h-full" src="" title="Short Encéfalo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="short-video-wrapper border-4 border-cyan-400 rounded-lg shadow-[0_0_25px_#00f6ff] bg-black my-1">
+          <iframe id="iframe-z2" src="" title="Short Encéfalo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p class="text-xs text-cyan-300 mt-1 font-medium">Short sobre el encéfalo.</p>
+        <p class="text-xs text-cyan-300 mt-2 font-medium">Short sobre el encéfalo.</p>
       </div>
 
       <footer class="w-full mb-2">
@@ -333,17 +351,17 @@
       </div>
     </section>
 
-    <!-- ================= VISTA ZONA 3: VÍDEO MÉDULA Y MENINGES (Short Vertical) ================= -->
+    <!-- ================= VISTA ZONA 3: VÍDEO MÉDULA Y MENINGES ================= -->
     <section id="view-z3-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
         <h2 class="text-base sm:text-xl neon-yellow font-arcade tracking-wider">ZONA 3: MÉDULA Y MENINGES</h2>
       </header>
 
       <div class="my-auto w-full flex flex-col items-center">
-        <div class="w-full max-w-[240px] aspect-[9/16] rounded-lg border-4 border-cyan-400 overflow-hidden bg-black shadow-[0_0_25px_#00f6ff] my-1">
-          <iframe id="iframe-z3" class="w-full h-full" src="" title="Short Médula Espinal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="short-video-wrapper border-4 border-cyan-400 rounded-lg shadow-[0_0_25px_#00f6ff] bg-black my-1">
+          <iframe id="iframe-z3" src="" title="Short Médula Espinal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p class="text-xs text-cyan-300 mt-1 font-medium">Short sobre médula espinal y meninges.</p>
+        <p class="text-xs text-cyan-300 mt-2 font-medium">Short sobre médula espinal y meninges.</p>
       </div>
 
       <footer class="w-full mb-2">
@@ -367,22 +385,22 @@
         </div>
         
         <div class="grid grid-cols-2 gap-3 my-auto p-1">
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="SUSTANCIA GRIS Y BLANCA" data-desc="La médula contiene sustancia gris central (en forma de mariposa, con somas neuronales y centro de reflejos medulares) y sustancia blanca periférica (formada por axones mielinizados que conducen impulsos hacia y desde el encéfalo).">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="SUSTANCIA GRIS Y BLANCA" data-desc="La médula contiene sustancia gris central (en forma de mariposa, con somas neuronales y centro de reflejos medulares) y sustancia blanca periférica (axones mielinizados).">
             <i class="fa-solid fa-dna text-2xl text-pink-400"></i>
             Sustancia Gris y Blanca
           </button>
           
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="DURAMADRE" data-desc="Capa meníngea más externa, fibrosa, gruesa y resistente. Protege físicamente el SNC (tanto encéfalo como médula espinal) frente a traumatismos directos.">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="DURAMADRE" data-desc="Capa meníngea más externa, fibrosa, gruesa y resistente. Protege físicamente el SNC frente a traumatismos.">
             <i class="fa-solid fa-shield text-2xl text-cyan-400"></i>
             Duramadre (Externa)
           </button>
 
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="ARACNOIDES" data-desc="Capa meníngea intermedia con un diseño filamentoso en forma de tela de araña. Delimita el espacio subaracnoideo por donde circula el líquido cefalorraquídeo.">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="ARACNOIDES" data-desc="Capa meníngea intermedia filamentosa en forma de tela de araña. Delimita el espacio subaracnoideo con líquido cefalorraquídeo.">
             <i class="fa-solid fa-spider text-2xl text-yellow-400"></i>
             Aracnoides (Intermedia)
           </button>
 
-          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="PIAMADRE" data-desc="Capa meníngea más interna y delicada, altamente vascularizada, que se adhiere estrechamente a la superficie del encéfalo y de la médula espinal.">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="PIAMADRE" data-desc="Capa meníngea más interna, delicada y altamente vascularizada, adherida al tejido nervioso.">
             <i class="fa-solid fa-feather text-2xl text-green-400"></i>
             Piamadre (Interna)
           </button>
@@ -417,17 +435,101 @@
       </div>
     </section>
 
-    <!-- ================= VISTA FIN ZONA 2 (O 3) ================= -->
-    <section id="view-z3-win" class="hidden h-full flex flex-col justify-between items-center text-center py-4">
+    <!-- ================= VISTA ZONA 4: VÍDEO SNP ================= -->
+    <section id="view-z4-video" class="hidden h-full flex flex-col justify-between items-center text-center py-2">
       <header>
-        <h2 class="text-lg sm:text-xl neon-yellow font-arcade tracking-wider">¡ZONA 3 SUPERADA!</h2>
+        <h2 class="text-base sm:text-xl neon-yellow font-arcade tracking-wider">ZONA 4: SISTEMA NERVIOSO PERIFÉRICO</h2>
+      </header>
+
+      <div class="my-auto w-full flex flex-col items-center">
+        <div class="short-video-wrapper border-4 border-cyan-400 rounded-lg shadow-[0_0_25px_#00f6ff] bg-black my-1">
+          <iframe id="iframe-z4" src="" title="Short SNP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="text-xs text-cyan-300 mt-2 font-medium">Short sobre nervios craneales, raquídeos y autónomo.</p>
+      </div>
+
+      <footer class="w-full mb-2">
+        <button id="btn-z4-to-explore" class="btn-arcade w-full max-w-xs py-3 px-6 rounded-lg text-xs sm:text-sm cursor-pointer tracking-wider">
+          EXPLORAR EL SNP <i class="fa-solid fa-project-diagram ml-2"></i>
+        </button>
+      </footer>
+    </section>
+
+    <!-- ================= VISTA ZONA 4: EXPLORACIÓN SNP ================= -->
+    <section id="view-z4-explore" class="hidden h-full flex flex-col justify-between items-center relative">
+      <div class="w-full flex justify-between items-center bg-purple-950 px-3 py-2 border-2 border-cyan-400 rounded-md text-xs sm:text-sm mb-2 font-semibold">
+        <div><span class="text-pink-400">ZONA:</span> <span class="text-yellow-300">4 / 5</span></div>
+        <div><span class="text-cyan-400">ESTADO:</span> <span class="text-green-400">SISTEMA PERIFÉRICO</span></div>
+      </div>
+
+      <div class="w-full bg-purple-950/90 border-2 border-pink-500 rounded-lg p-4 text-left flex-grow flex flex-col justify-between">
+        <div>
+          <span class="text-sm sm:text-base text-cyan-300 font-bold block mb-1">NERVIOS Y AUTONOMÍA PERIFÉRICA</span>
+          <p class="text-xs sm:text-sm text-gray-200 mb-2 leading-relaxed">Estudia las divisiones del SNP:</p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-3 my-auto p-1">
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="NERVIOS CRANEALES (12 PARES)" data-desc="Nacen directamente del encéfalo y se distribuyen principalmente por la cabeza, el cuello y órganos de los sentidos.">
+            <i class="fa-solid fa-head-side-brain text-2xl text-pink-400"></i>
+            Nervios Craneales
+          </button>
+          
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="NERVIOS ESPINALES (31 PARES)" data-desc="Nacen a ambos lados de la médula espinal a lo largo de la columna vertebral y se distribuyen por el tronco y las extremidades.">
+            <i class="fa-solid fa-arrows-split-up-and-left text-2xl text-cyan-400"></i>
+            Nervios Espinales
+          </button>
+
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="SISTEMA SIMPÁTICO" data-desc="Parte del sistema autónomo encargada de activar al organismo ante situaciones de alerta, estrés, huida o ejercicio intenso.">
+            <i class="fa-solid fa-bolt text-2xl text-yellow-400"></i>
+            Sistema Simpático
+          </button>
+
+          <button class="btn-hotspot p-4 rounded text-xs sm:text-sm text-yellow-300 font-bold cursor-pointer hs-btn text-center flex flex-col items-center justify-center gap-2" data-title="SISTEMA PARASIMPÁTICO" data-desc="Parte del sistema autónomo encargada de relajar el organismo, promoviendo la digestión y el ahorro de energía en reposo.">
+            <i class="fa-solid fa-leaf text-2xl text-green-400"></i>
+            Parasimpático
+          </button>
+        </div>
+
+        <button id="btn-z4-goto-quiz" class="btn-arcade w-full py-3 text-xs sm:text-sm rounded cursor-pointer mt-2">
+          SUPERAR RETO DEL SNP <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= VISTA ZONA 4: RETO FLASH ================= -->
+    <section id="view-z4-quiz" class="hidden h-full flex flex-col justify-between items-center relative">
+      <div class="w-full flex justify-between items-center bg-purple-950 px-3 py-2 border-2 border-cyan-400 rounded-md text-xs sm:text-sm mb-2 font-semibold">
+        <div><span class="text-pink-400">ZONA:</span> <span class="text-yellow-300">4 / 5</span></div>
+        <div><span class="text-cyan-400">ESTADO:</span> <span class="text-pink-400">MINIRETO ALEATORIO</span></div>
+      </div>
+
+      <div class="w-full bg-purple-950/90 border-2 border-pink-500 rounded-lg p-4 text-left flex-grow flex flex-col justify-between">
+        <div>
+          <span class="text-xs sm:text-sm font-arcade neon-pink block mb-2">PREGUNTA FLASH - ZONA 4</span>
+          <h3 id="q-z4-text" class="text-sm sm:text-base text-yellow-300 font-semibold leading-relaxed mb-3">
+            Cargando pregunta aleatoria...
+          </h3>
+        </div>
+
+        <div id="q-z4-options" class="grid grid-cols-1 gap-2.5 my-2"></div>
+
+        <button id="btn-z4-back" class="bg-purple-900 border border-cyan-400 text-cyan-300 w-full py-2.5 text-xs rounded font-medium cursor-pointer mt-2">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Volver a revisar el SNP
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= VISTA FIN ZONA 4 ================= -->
+    <section id="view-z4-win" class="hidden h-full flex flex-col justify-between items-center text-center py-4">
+      <header>
+        <h2 class="text-lg sm:text-xl neon-yellow font-arcade tracking-wider">¡ZONA 4 SUPERADA!</h2>
       </header>
 
       <div class="my-auto p-5 bg-purple-950 border-4 border-green-400 rounded-lg shadow-[0_0_25px_#00ff66] max-w-md w-full">
-        <div class="text-6xl mb-3">🛡️⚡</div>
-        <h3 class="text-base text-cyan-300 font-bold mb-2 uppercase">¡Conducción medular protegida!</h3>
+        <div class="text-6xl mb-3">🌐⚡</div>
+        <h3 class="text-base text-cyan-300 font-bold mb-2 uppercase">¡Red periférica conectada!</h3>
         <p class="text-xs sm:text-sm text-yellow-300 leading-relaxed font-medium">
-          Has completado con éxito la médula espinal y las capas meníngeas (duramadre, aracnoides y piamadre). ¡Estudio completado con éxito!
+          Has completado con éxito la exploración del Sistema Nervioso Periférico (nervios craneales, espinales y autónomo). ¡Todo listo para la última etapa!
         </p>
       </div>
 
@@ -622,6 +724,49 @@
       }
     ];
 
+    const bankZone4 = [
+      {
+        q: "¿Dónde nacen principalmente los 12 pares de nervios craneales del Sistema Nervioso Periférico?",
+        options: [
+          { text: "Nacen directamente del encéfalo y se distribuyen por la cabeza, cuello y sentidos.", correct: true, reason: "¡Correcto! Los nervios craneales emergen del encéfalo." },
+          { text: "A lo largo de las vértebras lumbares de la columna vertebral exclusivamente.", correct: false, reason: "Los que nacen de la columna son los nervios espinales." },
+          { text: "En los ganglios simpáticos del abdomen únicamente.", correct: false, reason: "Los pares craneales tienen su origen en el tronco encefálico y cerebro." }
+        ]
+      },
+      {
+        q: "¿Cuántos pares de nervios espinales o raquídeos emergen a ambos lados de la médula espinal?",
+        options: [
+          { text: "31 pares.", correct: true, reason: "¡Correcto! El cuerpo humano cuenta con 31 pares de nervios espinales." },
+          { text: "12 pares.", correct: true, reason: "12 pares corresponden a los nervios craneales, no a los espinales." },
+          { text: "100 pares.", correct: false, reason: "La cifra exacta es de 31 pares." }
+        ]
+      },
+      {
+        q: "¿Qué función principal desempeña el Sistema Nervioso Simpático en el organismo?",
+        options: [
+          { text: "Activar y preparar al organismo ante situaciones de alerta, estrés o actividad física intensa.", correct: true, reason: "¡Correcto! El simpático moviliza al cuerpo para la acción (lucha o huida)." },
+          { text: "Favorecer exclusivamente el descanso digestivo y la relajación profunda en cama.", correct: false, reason: "Esa función relajante corresponde al sistema parasimpático." },
+          { text: "Producir líquido cefalorraquídeo en los ventrículos cerebrales.", correct: false, reason: "El líquido cefalorraquídeo se produce en los plexos coroideos." }
+        ]
+      },
+      {
+        q: "¿Qué caracteriza la acción del Sistema Nervioso Parasimpático?",
+        options: [
+          { text: "Relajar el organismo, estimular la digestión y conservar la energía en reposo.", correct: true, reason: "¡Correcto! El parasimpático domina en situaciones de reposo y digestión." },
+          { text: "Acelerar la frecuencia cardíaca y dilatar las vías respiratorias ante el peligro.", correct: false, reason: "Eso lo realiza el sistema simpático." },
+          { text: "Transmitir órdenes motoras exclusivas hacia los músculos esqueléticos voluntarios.", correct: false, reason: "Los movimientos voluntarios corresponden al sistema somático." }
+        ]
+      },
+      {
+        q: "¿Cómo se divide funcionalmente el Sistema Nervioso Periférico en cuanto al control de los órganos internos?",
+        options: [
+          { text: "En Sistema Nervioso Autónomo (Simpático y Parasimpático) y Somático.", correct: true, reason: "¡Correcto! El SNP se divide en somático (voluntario) y autónomo (involuntario)." },
+          { text: "En Telencéfalo y Diencéfalo estricto.", correct: false, reason: "Telencéfalo y diencéfalo forman parte exclusiva del Sistema Nervioso Central (SNC)." },
+          { text: "En Duramadre y Piamadre meníngea.", correct: false, reason: "Duramadre y piamadre son capas de las meninges protectoras." }
+        ]
+      }
+    ];
+
     // Función Helper para mezclar arrays
     function shuffleArray(arr) {
       const a = [...arr];
@@ -640,6 +785,7 @@
       if (zone === 1) { bank = bankZone1; textId = 'q-z1-text'; optionsId = 'q-z1-options'; }
       else if (zone === 2) { bank = bankZone2; textId = 'q-z2-text'; optionsId = 'q-z2-options'; }
       else if (zone === 3) { bank = bankZone3; textId = 'q-z3-text'; optionsId = 'q-z3-options'; }
+      else if (zone === 4) { bank = bankZone4; textId = 'q-z4-text'; optionsId = 'q-z4-options'; }
 
       const randomQ = bank[Math.floor(Math.random() * bank.length)];
       document.getElementById(textId).textContent = randomQ.q;
@@ -694,14 +840,18 @@
     const viewZ3Video = document.getElementById('view-z3-video');
     const viewZ3Explore = document.getElementById('view-z3-explore');
     const viewZ3Quiz = document.getElementById('view-z3-quiz');
-    const viewZ3Win = document.getElementById('view-z3-win');
+    const viewZ4Video = document.getElementById('view-z4-video');
+    const viewZ4Explore = document.getElementById('view-z4-explore');
+    const viewZ4Quiz = document.getElementById('view-z4-quiz');
+    const viewZ4Win = document.getElementById('view-z4-win');
     
     const iframeIntro = document.getElementById('iframe-intro');
     const iframeZ1 = document.getElementById('iframe-z1');
     const iframeZ2 = document.getElementById('iframe-z2');
     const iframeZ3 = document.getElementById('iframe-z3');
+    const iframeZ4 = document.getElementById('iframe-z4');
 
-    // Navegación con Shorts Verticales
+    // Navegación con Shorts Verticales adaptados
     document.getElementById('btn-to-intro').addEventListener('click', () => {
       view1.classList.add('hidden');
       viewIntroVideo.classList.remove('hidden');
@@ -765,7 +915,11 @@
           iframeZ3.src = "https://www.youtube-nocookie.com/embed/wxnKbUvDF-Y?autoplay=1&rel=0";
         } else if (currentActiveQuiz === 3) {
           viewZ3Quiz.classList.add('hidden');
-          viewZ3Win.classList.remove('hidden');
+          viewZ4Video.classList.remove('hidden');
+          iframeZ4.src = "https://www.youtube-nocookie.com/embed/DvyTRm6zKv0?autoplay=1&rel=0";
+        } else if (currentActiveQuiz === 4) {
+          viewZ4Quiz.classList.add('hidden');
+          viewZ4Win.classList.remove('hidden');
         }
       }
     });
@@ -803,6 +957,24 @@
     document.getElementById('btn-z3-back').addEventListener('click', () => {
       viewZ3Quiz.classList.add('hidden');
       viewZ3Explore.classList.remove('hidden');
+    });
+
+    // Navegación Zona 4
+    document.getElementById('btn-z4-to-explore').addEventListener('click', () => {
+      iframeZ4.src = "";
+      viewZ4Video.classList.add('hidden');
+      viewZ4Explore.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-z4-goto-quiz').addEventListener('click', () => {
+      renderQuiz(4);
+      viewZ4Explore.classList.add('hidden');
+      viewZ4Quiz.classList.remove('hidden');
+    });
+
+    document.getElementById('btn-z4-back').addEventListener('click', () => {
+      viewZ4Quiz.classList.add('hidden');
+      viewZ4Explore.classList.remove('hidden');
     });
 
     document.getElementById('btn-restart').addEventListener('click', () => {
